@@ -1,0 +1,9 @@
+node_modules
+.public
+.idea
+public
+build
+
+npm-debug.log
+
+src/_config/env/production.js

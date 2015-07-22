@@ -1,0 +1,17 @@
+.login-button{
+  .md-icon-button{
+    width: 10em;
+    height: 20em;
+    md-icon{
+      font-size: 10em;
+      position: relative;
+      bottom:0.4em;
+    }
+    &.leave-animation{
+      -webkit-animation: lightSpeedOut;
+      animation: lightSpeedOut;
+      animation-duration: 1s;
+      animation-delay: 0.4s;
+    }
+  }
+}
