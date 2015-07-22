@@ -8,15 +8,17 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
 	<base href="/"/>
+	<script src="https://rawgit.com/timdown/rangy/master/lib/rangy-core.js"></script>
+	<script src="https://rawgit.com/timdown/rangy/master/lib/rangy-selectionsaverestore.js"></script>
 	<!-- todo remove this when ngamin would work with webpack -->
 	<!--<link rel="stylesheet" href="https://rawgit.com/marmelab/ng-admin/master/build/ng-admin.min.css"/>-->
-	<script src="https://rawgit.com/marmelab/ng-admin/master/build/ng-admin.min.js" type="application/javascript"></script>
+	<!--<script src="https://rawgit.com/marmelab/ng-admin/master/build/ng-admin.min.js" type="application/javascript"></script>-->
 </head>
 <body ng-app="ai.admin" layout="column">
 	<aside main-aside></aside>
 	<main-header></main-header>
-	<div ui-view flex>
+	<md-content ui-view flex layout="column">
 		<div class="loading" ng-init="isLoading = true;" ng-if="isLoading">Loading&#8230;</div>
-	</div>
+	</md-content>
 </body>
 </html>

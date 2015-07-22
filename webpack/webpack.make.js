@@ -5,6 +5,13 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer-core');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var path = require('path');
+
+
+var ngAdminSources = [
+
+];
+
 
 module.exports = function makeWebpackConfig (options) {
   /**
@@ -32,7 +39,19 @@ module.exports = function makeWebpackConfig (options) {
     config.entry = {}
   } else {
     config.entry = {
-      app: './src/app.js'
+      app: [
+        './src/components/dashboard/ng-admin/javascripts/vendors.js',
+        'font-awesome/scss/font-awesome.scss',
+        //'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
+        'nprogress/nprogress.css',
+        'humane-js/themes/flatty.css',
+        'textangular/src/textAngular.css',
+        'codemirror/lib/codemirror.css',
+        'codemirror/addon/lint/lint.css',
+        'ui-select/dist/select.css',
+        './src/components/dashboard/ng-admin/sass/ng-admin.scss',
+        './src/app.js'
+      ]
     }
   }
 
@@ -93,8 +112,13 @@ module.exports = function makeWebpackConfig (options) {
       // Compiles ES6 and ES7 into ES5 code
       test: /\.js$/,
       loader: 'babel?optional=runtime',
-      exclude: /node_modules/
-    }, {
+      exclude: /node_modules\/(?!admin-config)/
+    },
+      {
+        test: /\.(woff2?|svg|ttf|eot)(\?.*)?$/,
+        loader: 'url'
+      },
+      {
       // ASSET LOADER
       // Reference: https://github.com/webpack/file-loader
       // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output

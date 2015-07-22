@@ -1,0 +1,17 @@
+<md-toolbar>
+	<div class="md-toolbar-tools">
+		<md-button class="md-icon-button" hide-gt-md aria-label="toggle sidenav" ng-if="header.isAuthenticated()" ng-click="header.toggleDashboardMenu()">
+			<md-icon md-font-icon="ion-navicon">
+			</md-icon>
+		</md-button>
+		<span flex></span>
+		<md-button class="md-icon-button" aria-label="Settings">
+			<md-icon md-font-icon="ion-settings">
+			</md-icon>
+		</md-button>
+		<md-button class="md-icon-button" aria-label="toggle sidenav" ng-if="header.isAuthenticated()"  ng-click="header.toggleSidenav()">
+			<md-icon md-font-icon="ion-navicon">
+			</md-icon>
+		</md-button>
+	</div>
+</md-toolbar>
