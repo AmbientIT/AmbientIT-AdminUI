@@ -5,9 +5,7 @@ import formationUi from './entities/formation';
 import mediaUi from './entities/media';
 import userUi from './entities/user';
 import projectUi from './entities/project';
-
-import customLayoutTemplate from './custom/views/layout.tpl.html';
-import listViewTemplate from './custom/views/list.tpl.html';
+import dashboardTemplate from './dashboard.tpl.html';
 
 export default (NgAdminConfigurationProvider, config)=>{
   let nga = NgAdminConfigurationProvider;
@@ -15,14 +13,6 @@ export default (NgAdminConfigurationProvider, config)=>{
 
   let admin = nga.application('AmbientIT Back-Office')
     .baseApiUrl(config.api.baseUrl);
-
-  admin.layout(customLayoutTemplate);
-
-  //admin.customTemplate(function(viewName) {
-  //  if (viewName === 'ListView') {
-  //    return listViewTemplate;
-  //  }
-  //});
 
   let contact = nga.entity('contact')
     .identifier(nga.field('slug'));
@@ -62,6 +52,8 @@ export default (NgAdminConfigurationProvider, config)=>{
   contactUi(nga,contact);
   projectUi(nga, project, media, user);
 
+
+
   admin.menu(nga.menu().title('Ambient')
       .addChild(nga.menu(contact).icon('<i class="ion-person-stalker"></i>'))
       .addChild(nga.menu(user).icon('<i class="ion-person"></i>'))
@@ -77,4 +69,8 @@ export default (NgAdminConfigurationProvider, config)=>{
   );
 
   nga.configure(admin);
+
+  //admin.dashboard(nga.dashboard()
+  //    .template(dashboardTemplate)
+  //);
 }

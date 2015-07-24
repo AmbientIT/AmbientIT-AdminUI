@@ -10,9 +10,9 @@ define(function (require) {
                 values: '&'
             },
             template:
-'<span ng-repeat="ref in values() track by $index">' +
-    '<span class="label label-default">{{ ref }}</span>' +
-'</span>'
+'<md-chips ng-repeat="ref in values() track by $index">' +
+    '<md-chip>{{ ref }}</md-chip>' +
+'</md-chips>'
         };
     }
 

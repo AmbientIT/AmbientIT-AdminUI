@@ -22,10 +22,7 @@ define(function () {
                     }, $state.params));
                 };
             },
-            template:
-` <a class="btn btn-default" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoEdit()">
-    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;{{ ::label }}
-</a>`
+            template: `<md-button ng-click="gotoEdit()" class="md-icon-button" ng-class="size ? \'btn-\' + size : \'\'"><md-icon md-font-icon="ion-edit"></md-icon>&nbsp;{{ ::label }}</md-button>`
         };
     }
 

@@ -17,10 +17,7 @@ define(function () {
                     $window.history.back();
                 };
             },
-            template:
-` <a class="btn btn-default" ng-class="size ? \'btn-\' + size : \'\'" ng-click="back()">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>&nbsp;{{ ::label }}
-</a>`
+            template: `<md-button class="md-icon-button" ng-class="size ? \'btn-\' + size : \'\'" ng-click="back()"><md-icon  md-font-icon="ion-chevron-left" ></md-icon>&nbsp;{{ ::label }}</md-button>`
         };
     }
 

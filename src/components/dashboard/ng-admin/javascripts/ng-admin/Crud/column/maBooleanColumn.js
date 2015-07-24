@@ -12,7 +12,7 @@ define(function (require) {
             link: function(scope) {
                 scope.isOk = !!scope.value();
             },
-            template: '<span class="glyphicon" ng-class="{\'glyphicon-ok\': isOk, \'glyphicon-remove\': !isOk}"></span>'
+            template: '<span  ng-class="{\'ion-checkmark-round\': isOk, \'ion-close-round\': !isOk}"></span>'
         };
     }
 

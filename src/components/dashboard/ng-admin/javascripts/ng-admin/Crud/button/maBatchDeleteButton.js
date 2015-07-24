@@ -26,11 +26,7 @@ define(function () {
                     }, $state.params));
                 };
             },
-            template:
-`<span ng-click="gotoBatchDelete()">
-    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;{{ ::label }}
-</span>`
-
+            template: `<md-button class="md-icon-button" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoBatchDelete()"><md-icon md-font-icon="ion-trash-a"></md-icon>&nbsp;{{ ::label }}</md-button>`
         };
     }
 

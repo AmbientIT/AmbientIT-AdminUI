@@ -31,11 +31,12 @@ define(function (require) {
 
                     input[name] = attributes[name];
                 }
+                scope.label = field.label();
             },
-            template:
-`<input type="{{ type || 'text' }}" ng-attr-step="{{ step }}" ng-model="value"
-    id="{{ name }}" name="{{ name }}" class="form-control"
-    'ng-required="v.required" ng-minlength="v.minlength" ng-maxlength="v.maxlength" />`
+            template: `<md-input-container>
+                        <label>{{label}}</label>
+                        <input type="{{ type || 'text' }}"  ng-attr-step="{{ step }}" ng-model="value" id="{{ name }}" name="{{ name }}" ng-required="v.required" ng-minlength="v.minlength" ng-maxlength="v.maxlength" md-minlength="v.minlength" md-maxlength="v.maxlength"/>
+                      </md-input-container>`
         };
     }
 

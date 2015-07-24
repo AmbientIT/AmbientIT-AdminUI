@@ -1,4 +1,3 @@
-
 .ui-select-bootstrap .ui-select-choices-row.active>a {
   background-color: #009688;
 }
@@ -12,4 +11,18 @@
 .sidebar{
   width:304px !important;
   margin-top:0 !important;
+}
+
+#create-view, #edit-view{
+  width:100%;
+}
+
+@media screen and(min-width: 900px){
+  #create-view, #edit-view{
+    width:75%;
+  }
+  .dashboard-content{
+    width: 75%;
+    margin: auto;
+  }
 }

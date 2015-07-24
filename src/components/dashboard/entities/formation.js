@@ -21,8 +21,6 @@ export default (nga, formation, category)=>{
         .label('Prérequis')
         .template('<admin-relation-repeter entity-name="formation" data="entry.values.previous"></admin-relation-repeter>')
     ]);
-
-
   formation.listView()
     .title('Formations')
     .sortField('name')

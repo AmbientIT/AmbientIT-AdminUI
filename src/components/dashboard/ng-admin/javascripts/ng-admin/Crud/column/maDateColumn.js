@@ -14,7 +14,7 @@ define(function () {
                 var field = scope.field();
                 scope.format = field.format();
                 if (!scope.format) {
-                    scope.format = field.type() === 'date' ? 'yyyy-MM-dd' : 'yyyy-MM-dd HH:mm:ss';
+                    scope.format = field.type() === 'date' ? 'dd-MM-yyyy' : 'dd-MM-yyyy HH:mm:ss';
                 }
             },
             template: '<span>{{ value() | date:format }}</span>'

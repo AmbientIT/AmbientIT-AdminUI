@@ -11,7 +11,7 @@ define(function () {
                 selection: '=',
                 toggleSelectAll: '&'
             },
-            template: '<input type="checkbox" ng-click="toggleSelectAll()" ng-checked="selection.length == entries.length" />',
+            template: '<md-checkbox ng-click="toggleSelectAll()" aria-label="toggle all"></md-checkbox>',
             link: function (scope, element) {
                 scope.$watch('selection', function (selection) {
                     element.children()[0].indeterminate = selection.length > 0 && selection.length != scope.entries.length;

@@ -1,32 +1,36 @@
-<div class="row">
-    <div class="col-lg-12">
-        <ma-view-actions override="::showController.actions" entry="entry" entity="::showController.entity">
-            <ma-list-button ng-if="::entity.listView().enabled" entity="::entity"></ma-list-button>
-            <ma-edit-button ng-if="::entity.editionView().enabled" entry="entry" entity="::entity"></ma-edit-button>
-            <ma-delete-button ng-if="::entity.deletionView().enabled" entry="entry" entity="::entity"></ma-delete-button>
-        </ma-view-actions>
+<section layout="column" layout-align="center center">
+	<md-toolbar style="text-align:center">
+		<div class="md-toolbar-tools">
+			<div flex>
+				<h1 compile="::showController.title">
+					{{ ::showController.view.entity.name() | humanize:true | singularize }}  #{{ ::entry.identifierValue }} Detail
+				</h1>
+				<p class="lead" ng-if="::showController.description" compile="::showController.description">{{ ::showController.description }}</p>
+			</div>
+			<ma-view-actions override="::showController.actions" entry="entry" entity="::showController.entity">
+				<ma-list-button ng-if="::entity.listView().enabled" entity="::entity"></ma-list-button>
+				<ma-edit-button ng-if="::entity.editionView().enabled" entry="entry" entity="::entity"></ma-edit-button>
+				<ma-delete-button ng-if="::entity.deletionView().enabled" entry="entry" entity="::entity"></ma-delete-button>
+			</ma-view-actions>
+		</div>
+	</md-toolbar>
+	<span flex></span>
+	<div class="table-responsive-vertical md-whiteframe-z2" id="show-view">
+		<table class="table table-hover table-mc-light-blue">
+			<tbody>
+			<tr ng-repeat="field in ::showController.fields track by $index">
 
-        <div class="page-header">
-            <h1 compile="::showController.title">
-                {{ ::showController.view.entity.name() | humanize:true | singularize }}  #{{ ::entry.identifierValue }} Detail
-            </h1>
-            <p class="lead" ng-if="::showController.description" compile="::showController.description">{{ ::showController.description }}</p>
-        </div>
-    </div>
-</div>
+				<td>{{ field.label() }}</td>
 
+				<td class="show-value" flex ng-class="::'ng-admin-field-' + field.name() + ' ' + (field.getCssClasses(entry))">
 
-<div class="row form-horizontal" id="show-view">
+					<ma-column field="::field" entry="::entry" entity="::entity" datastore="::showController.dataStore"></ma-column>
 
-    <div class="col-lg-12 form-group" ng-repeat="field in ::showController.fields track by $index">
+				</td>
+			</tr>
+			</tbody>
+		</table>
 
-        <label class="col-sm-2 control-label">{{ field.label() }}</label>
-
-        <div class="show-value" ng-class="::'ng-admin-field-' + field.name() + ' ' + (field.getCssClasses(entry) || 'col-sm-10 col-md-8 col-lg-7')">
-
-            <ma-column field="::field" entry="::entry" entity="::entity" datastore="::showController.dataStore"></ma-column>
-
-        </div>
-    </div>
-
-</div>
+	</div>
+	<span flex></span>
+</section>

@@ -9,7 +9,7 @@ define(function (require) {
             scope: {
                 values: '&',
             },
-            template: '<span ng-repeat="ref in values() track by $index" class="label label-default">{{ ref }}</span>'
+            template: '<md-chips ng-repeat="ref in values() track by $index"><md-chip>{{ ref }}</md-chip></md-chips>'
         };
     }
 

@@ -18,6 +18,7 @@ define(function (require) {
             link: function (scope, element) {
                 var field = scope.field();
                 scope.name = field.name();
+                scope.label = field.label();
                 scope.v = field.validation();
                 scope.value = !!scope.value;
                 var input = element.children()[0];
@@ -27,7 +28,7 @@ define(function (require) {
                 }
             },
             template:
-            '<input type="checkbox" ng-model="value" id="{{ name }}" name="{{ name }}" class="form-control" />'
+            ' <md-checkbox ng-model="value" id="{{ name }}" name="{{ name }}" ng-model="data.cb1" aria-label="{{ name }}">{{ label }}</md-checkbox>'
         };
     }
 

@@ -11,15 +11,16 @@ define(function (require) {
                 return '<span ng-switch-when="' + field + '">' + fieldView.getWriteWidget() +'</span>';
             }).join('');
         var template =
-'<div id="row-{{ field.name() }}" class="has-feedback" ng-class="getFieldValidationClass(field)">' +
-    '<label for="{{ field.name() }}" class="col-sm-2 control-label">' +
-        '{{ field.label() }}<span ng-if="field.validation().required">&nbsp;*</span>&nbsp;' +
-    '</label>' +
-    '<div ng-if="field.editable()" ng-class="getClassesForField(field, entry)" ng-switch="field.type()">' +
+'<div id="row-{{ field.name() }}" class="has-feedback" >' +
+
+'<md-tooltip>' +
+'{{ field.label() }}' +
+'</md-tooltip>' +
+    '<div ng-if="field.editable()" ng-switch="field.type()">' +
         writeWidgetTypes +
         '<span ng-show="fieldHasValidation(field)" class="glyphicon form-control-feedback" ng-class="fieldIsValid(field) ? \'glyphicon-ok\' : \'glyphicon-remove\'"></span>' +
     '</div>' +
-    '<div ng-if="!field.editable()" ng-class="field.getCssClasses(entry)||\'col-sm-10\'">' +
+    '<div ng-if="!field.editable()" >' +
         '<p class="form-control-static">' +
             '<ma-column field="::field" entry="::entry" entity="::entity" datastore="::datastore"></ma-column>' +
         '</p>' +

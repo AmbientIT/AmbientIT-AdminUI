@@ -1,21 +1,27 @@
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="main" >
-	<md-content layout-padding layout-column>
-		<div style="text-align:center;">
-			<img style="border-radius:50%" ng-src="{{ ::aside.loggedUser.picture }}" alt="{{ ::aside.loggedUser.displayName }} picture"/>
+	<md-toolbar class="md-tall" style="background-image: url({{ ::aside.bg }});background-size: cover;min-height:300px">
+		<div style="text-align:center">
+			<img height="150px" width="150px" style="padding:2px; background-color: rgba(255,255,255,0.4);  border-radius:50%; margin-top:2em;" ng-src="{{ ::aside.loggedUser.picture }}" alt="{{ ::aside.loggedUser.displayName }} picture"/>
+		</div>
+		<span flex></span>
+		<div  layout="column" layout-align="center center">
 			<h3 ng-bind="::aside.loggedUser.displayName"></h3>
 			<small ng-bind="::aside.loggedUser.email"></small>
-			<p ng-bind="::aside.loggedUser.description"></p>
+			<md-tooltip ng-bind="::aside.loggedUser.description"></md-tooltip>
 		</div>
-		<md-list>
-			<md-subheader class="md-no-sticky">Actions</md-subheader>
+	</md-toolbar>
+	<md-content layout-padding layout-column>
+		<md-list class="main-menu">
+			<md-subheader>Actions</md-subheader>
 			<md-list-item ng-click="aside.logout()">
 				<md-icon class="md-warn" md-font-icon="ion-log-out"></md-icon>
 				<p>Logout </p>
 			</md-list-item>
-			<md-subheader class="md-no-sticky">Liens</md-subheader>
-			<md-list-item ui-sref="dashboard">
+			<md-divider ></md-divider>
+			<md-subheader>Navigation</md-subheader>
+			<md-list-item ui-sref-active="md-whiteframe-z3">
 				<md-icon md-font-icon="ion-pie-graph"></md-icon>
-				<p>Dashboard</p>
+				<p ui-sref="dashboard">Dashboard</p>
 			</md-list-item>
 			<md-list-item>
 				<md-icon md-font-icon="ion-social-nodejs"></md-icon>
@@ -25,6 +31,7 @@
 				<md-icon md-font-icon="ion-erlenmeyer-flask"></md-icon>
 				<p>Projects website</p>
 			</md-list-item>
+			<md-divider ></md-divider>
 		</md-list>
 	</md-content>
 </md-sidenav>

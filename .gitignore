@@ -6,4 +6,4 @@ build
 
 npm-debug.log
 
-src/_config/env/production.js
+src/config/env/production.js

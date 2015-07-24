@@ -34,9 +34,7 @@ define(function () {
                 };
             },
             template:
-` <a class="btn btn-default" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoList()">
-    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;{{ ::label }}
-</a>`
+`<md-button class="md-icon-button" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoList()"><md-icon md-font-icon="ion-grid"></md-icon>&nbsp;{{ ::label }}</md-button>`
         };
     }
 

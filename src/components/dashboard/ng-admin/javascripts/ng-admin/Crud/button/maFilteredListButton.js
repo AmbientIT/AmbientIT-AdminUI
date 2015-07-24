@@ -5,11 +5,11 @@ define(function () {
 
     /**
      * Link to filtered list
-     * 
+     *
      * Usage:
      *
      *     <!-- In a scope where the current entry is a post, link tio the related comments -->
-     *     <ma-filtered-list-button 
+     *     <ma-filtered-list-button
      *       entity-name="comments"
      *       filter="{ post_id: entry.values.id }"
      *       text="See related comments"
@@ -37,10 +37,7 @@ define(function () {
                     $state.go($state.get('list'), { 'entity': scope.entityName, 'search': scope.filter()});
                 };
             },
-            template:
-` <a class="btn btn-default" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoList()">
-    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>&nbsp;{{ ::label }}
-</a>`
+            template: `<md-button class="md-icon-button" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoList()"><md-icon md-font-icon="ion-grid"></md-icon>&nbsp;{{ ::label }}</md-button>`
         };
     }
 

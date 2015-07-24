@@ -32,8 +32,7 @@ define(function () {
                     return !!this.value;
                 };
             },
-            template:
-            '<a class="btn btn-default" ng-click="toggle()" id="{{ name }}" ng-class="{active: isActive()}" >{{ label }}</a>'
+            template: '<md-button class="md-raised"ng-click="toggle()" id="{{ name }}" ng-class="{active: isActive()}" >{{ label }}</md-button>'
         };
     }
 

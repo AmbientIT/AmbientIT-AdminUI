@@ -41,7 +41,7 @@ export default (nga, media)=>{
         .validation({ maxlength:200}),
       nga.field('url','file')
         .label('avatar')
-        .uploadInformation({ 'url': '/api/upload/media', 'fileFormDataName': 'file', 'accept': 'image/*' ,'apifilename': 'picturePath'})
+        .uploadInformation({ 'url': 'http://localhost:3000/api/upload/media', 'fileFormDataName': 'file', 'accept': 'image/*' ,'apifilename': 'picturePath'})
     ]);
 
   media.creationView()

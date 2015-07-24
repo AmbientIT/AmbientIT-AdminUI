@@ -25,10 +25,11 @@ define(function (require) {
                     input[name] = attributes[name];
                 }
             },
-            template: 
-'<textarea ng-model="value" id="{{ name }}" name="{{ name }}" class="form-control"' + 
-    'ng-required="v.required" ng-minlength="v.minlength" ng-maxlength="v.maxlength">' +
-'</textarea>'
+            template: `<md-input-container>
+                           <label>{{field._label}}</label>
+                           <textarea ng-model="value" id="{{ name }}" name="{{ name }}" ng-required="v.required" ng-minlength="v.minlength" ng-maxlength="v.maxlength" md-minlength="v.minlength" md-maxlength="v.maxlength"></textarea>
+                       </md-input-container>`
+
         };
     }
 

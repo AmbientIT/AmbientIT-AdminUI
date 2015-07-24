@@ -11,7 +11,7 @@ define(function () {
                 selection: '=',
                 toggleSelect: '&'
             },
-            template: '<input type="checkbox" ng-click="toggle(entry)" ng-checked="isInSelection()"/>',
+            template: '<md-checkbox aria-label="toggle" ng-click="toggle(entry)" ng-checked="isInSelection()"></md-checkbox>',
             link: function (scope) {
                 scope.toggle = entry => scope.toggleSelect({entry: entry});
                 let e = scope.entry;

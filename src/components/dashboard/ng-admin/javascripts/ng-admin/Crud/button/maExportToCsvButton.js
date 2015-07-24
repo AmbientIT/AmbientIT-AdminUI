@@ -57,7 +57,7 @@ define(function () {
                                     [references[name].targetField()],
                                     references[name].targetEntity().name(),
                                     references[name].targetEntity().identifier().name()
-                                    
+
                                 );
 
                                 scope.datastore.setEntries(
@@ -88,12 +88,7 @@ define(function () {
                         });
                 };
             },
-            template:
-`<span ng-if="has_export">
-    <a class="btn btn-default" ng-click="exportToCsv()">
-        <span class="glyphicon glyphicon-download" aria-hidden="true"></span>&nbsp;{{ ::label }}
-    </a>
-</span>`
+            template: `<md-button ng-click="exportToCsv()" ng-class="size ? \'btn-\' + size : \'\'" class="md-icon-button"><md-icon md-font-icon="ion-android-download"></md-icon>&nbsp;{{ ::label }}</md-button>`
         };
     }
 

@@ -22,11 +22,7 @@ define(function () {
                     }, $state.params));
                 };
             },
-            template:
-` <a class="btn btn-default" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoDelete()">
-    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;{{ ::label }}
-</a>`
-
+            template: `<md-button class="md-icon-button md-warn" ng-class="size ? \'btn-\' + size : \'\'" ng-click="gotoDelete()"><md-icon md-font-icon="ion-trash-a"></md-icon>&nbsp;{{ ::label }}</md-button>`
         };
     }
 

@@ -42,7 +42,7 @@ module.exports = function makeWebpackConfig (options) {
       app: [
         './src/components/dashboard/ng-admin/javascripts/vendors.js',
         'font-awesome/scss/font-awesome.scss',
-        //'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
+        'bootstrap-sass/assets/stylesheets/_bootstrap.scss',
         'nprogress/nprogress.css',
         'humane-js/themes/flatty.css',
         'textangular/src/textAngular.css',

@@ -1,28 +1,29 @@
-<div class="row">
-    <div class="col-lg-12">
-        <ma-view-actions override="::formController.actions" entry="entry" entity="::formController.entity">
-            <ma-list-button ng-if="::entity.listView().enabled" entity="::entity"></ma-list-button>
-        </ma-view-actions>
+<section layout="column" layout-align="center center">
+	<md-toolbar style="text-align:center">
+		<div class="md-toolbar-tools">
+			<div flex>
+				<h1 compile="::formController.title">
+					Creation de {{ ::formController.view.entity.name() | humanize:true | singularize }}
+				</h1>
+				<p class="lead" ng-if="::formController.description" compile="::formController.description">{{ ::formController.description }}</p>
+			</div>
+			<ma-view-actions override="::formController.actions" entry="entry" entity="::formController.entity">
+				<ma-list-button ng-if="::entity.listView().enabled" entity="::entity"></ma-list-button>
+			</ma-view-actions>
+		</div>
+	</md-toolbar>
+	<span flex></span>
+	<div class="md-whiteframe-z2" id="create-view" ng-class="::'ng-admin-entity-' + formController.entity.name()">
+		<form name="formController.form" ng-submit="formController.submitCreation($event)" layout="column">
+			<div ng-repeat="field in ::formController.fields track by $index">
+				<ma-field field="::field" entry="entry" entity="::entity" form="formController.form" datastore="::formController.dataStore"></ma-field>
+			</div>
 
-        <div class="page-header">
-            <h1 compile="::formController.title">
-                Create new {{ ::formController.view.entity.name() | humanize:true | singularize }}
-            </h1>
-            <p class="lead" ng-if="::formController.description" compile="::formController.description">{{ ::formController.description }}</p>
-        </div>
-    </div>
-</div>
+			<div layout="row" layout-align="center">
+				<md-button flex="50" type="submit" class="md-raised md-primary"><md-icon md-icon-font="ion-checkmark-round"></md-icon> Soumettre</md-button>
+			</div>
+		</form>
+	</div>
+	<span flex></span>
+</section>
 
-<div class="row" id="create-view" ng-class="::'ng-admin-entity-' + formController.entity.name()">
-    <form class="col-lg-12 form-horizontal" name="formController.form" ng-submit="formController.submitCreation($event)">
-        <div class="form-field form-group" ng-repeat="field in ::formController.fields track by $index">
-            <ma-field field="::field" entry="entry" entity="::entity" form="formController.form" datastore="::formController.dataStore"></ma-field>
-        </div>
-
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Submit</button>
-            </div>
-        </div>
-    </form>
-</div>

@@ -17,7 +17,7 @@ define(function (require) {
             restrict: 'E',
             link: {
                 pre: function(scope) {
-                    var uploadInformation = scope.field().uploadInformation();
+                  var uploadInformation = scope.field().uploadInformation();
                     if (!uploadInformation.hasOwnProperty('url')) {
                         throw new Error('You must provide a URL property to allow the upload of files.');
                     }
@@ -40,7 +40,8 @@ define(function (require) {
                 },
                 post: function(scope, element) {
                     var field = scope.field();
-                    scope.name = field.name();
+                  scope.label = field.label();
+                  scope.name = field.name();
                     scope.v = field.validation();
                     if (scope.value) {
                         scope.v.required = false;
@@ -100,24 +101,21 @@ define(function (require) {
                 }
             },
             template:
-'<div class="row">' +
-    '<div class="col-md-2">' +
-        '<a class="btn btn-default" ng-click="selectFile()">' +
-            '<span>Browse</span>' +
-        '</a>' +
+'<div layout="column" >' +
+    '<div layout="row">' +
+        '<md-button class="md-raised md-primary" ng-click="selectFile()">' +
+            '{{ label }}' +
+        '</md-button>' +
     '</div>' +
-    '<div class="col-md-10">' +
-        '<div class="row" ng-repeat="file in files track by $index">' +
-            '<div class="col-md-3" style="padding-top: 6px;">' +
-                '<div class="progress" style="margin-bottom: 0;" ng-if="file.progress">' +
-                    '<div class="progress-bar" role="progressbar" aria-valuenow="{{ file.progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ file.progress }}%;">' +
-                        '<span class="sr-only">{{ file.progress }}% Complete</span>' +
-                    '</div>' +
-                '</div>' +
+    '<div layout="column">' +
+        '<div ng-repeat="file in files track by $index">' +
+            '<div flex="25" style="padding-top: 6px;">' +
+              ' <md-progress-linear md-mode="buffer" value="{{file.progress}}">' +
             '</div>' +
-            '<div class="col-md-9" style="padding-top: 6px;"><small><em>{{ file.name }}<em><small></div>' +
+            '<md-chips><md-chip style="padding-top: 6px;"><small><em>{{ file.name }}</em></small></md-chip></md-chips>' +
         '</div>' +
     '</div>' +
+
 '</div>' +
 '<input type="file" ngf-multiple="multiple" ngf-accept="{{ accept }}" ngf-select ngf-change="fileSelected($files)"' +
         'id="{{ name }}" name="{{ name }}" ng-required="v.required" style="display:none" />'
