@@ -1,4 +1,5 @@
 export default class LoginButtonController{
+  /* @ngInject */
   constructor( $auth, $timeout, $mdDialog, loggedUser){
     this.isVisible = true;
     this.isLeaving = false;

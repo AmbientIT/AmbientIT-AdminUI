@@ -1,4 +1,6 @@
-export default ($locationProvider, $compileProvider)=> {
+export default
+/* @ngInject */
+($locationProvider, $compileProvider)=> {
   $locationProvider.html5Mode({
     enabled: true,
     requireBase:true

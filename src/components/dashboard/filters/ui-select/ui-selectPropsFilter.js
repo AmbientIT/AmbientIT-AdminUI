@@ -1,4 +1,6 @@
-export default ()=>{
+export default
+/* @ngInject */
+()=>{
   return (items, props)=> {
     var out = [];
 

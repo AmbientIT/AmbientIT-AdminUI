@@ -1,4 +1,8 @@
+require('../sass/ng-admin.scss');
+
 require('es6-promise').polyfill(); // for IE
+
+require('./vendors');
 
 require('./ng-admin/Main/MainModule');
 require('./ng-admin/Crud/CrudModule');

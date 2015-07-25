@@ -11,14 +11,10 @@ define(function (require) {
                 return '<span ng-switch-when="' + field + '">' + fieldView.getWriteWidget() +'</span>';
             }).join('');
         var template =
-'<div id="row-{{ field.name() }}" class="has-feedback" >' +
-
-'<md-tooltip>' +
-'{{ field.label() }}' +
-'</md-tooltip>' +
+'<div class="has-feedback" >' +
     '<div ng-if="field.editable()" ng-switch="field.type()">' +
         writeWidgetTypes +
-        '<span ng-show="fieldHasValidation(field)" class="glyphicon form-control-feedback" ng-class="fieldIsValid(field) ? \'glyphicon-ok\' : \'glyphicon-remove\'"></span>' +
+        '<span ng-show="fieldHasValidation(field) && getInputForField(field).$touched" class="form-control-feedback" ng-class="fieldIsValid(field) ? \'ion-checkmark-round\' : \'ion-close-round\'"></span>' +
     '</div>' +
     '<div ng-if="!field.editable()" >' +
         '<p class="form-control-static">' +

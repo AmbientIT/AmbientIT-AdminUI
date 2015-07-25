@@ -1,8 +1,11 @@
-export default ($stateProvider)=>{
+import template from './home.tpl.html';
+
+export default
+/* @ngInject */
+($stateProvider)=>{
   $stateProvider('home',{
     url:'',
-    onEnter: ($state)=>{
-      $state.go('dashboard');
-    }
+    controller: 'HomeController as ctrl',
+    template: template
   })
 }

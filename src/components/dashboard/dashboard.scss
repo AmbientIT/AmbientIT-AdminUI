@@ -17,6 +17,14 @@
   width:100%;
 }
 
+.md-select-label{
+  width:100%;
+}
+
+.barred-text{
+  text-decoration: line-through;
+}
+
 @media screen and(min-width: 900px){
   #create-view, #edit-view{
     width:75%;

@@ -2,13 +2,15 @@ import mailTo from './adminMailTo/adminMailTo';
 import picture from './adminPicture/adminPicture';
 import repeter from './adminRelationRepeter/AdminRelationRepeter';
 import select from './adminRelationSelect/AdminRelationSelect';
-import selectCtrl from './adminRelationSelect/AdminRelationSelectController';
 import resize from './resizeButton/resizeButton';
+import slider from './adminSlider/adminSlider';
+import selectController from './adminRelationSelect/AdminRelationSelectController';
 
 export default angular.module('ai.dashboard.components',[
   'ui.select'
 ])
-  .controller('AdminRelationSelectController', selectCtrl)
+  .controller('AdminRelationSelectController',selectController)
+  .directive('adminSlider',slider)
   .directive('adminMailto', mailTo)
   .directive('adminPicture', picture)
   .directive('adminRelationRepeter', repeter)

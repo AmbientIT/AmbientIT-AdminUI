@@ -40,7 +40,7 @@ export default (nga, media)=>{
         .attributes({placeholder: 'la description du média'})
         .validation({ maxlength:200}),
       nga.field('url','file')
-        .label('avatar')
+        .label('Uploader une image')
         .uploadInformation({ 'url': 'http://localhost:3000/api/upload/media', 'fileFormDataName': 'file', 'accept': 'image/*' ,'apifilename': 'picturePath'})
     ]);
 

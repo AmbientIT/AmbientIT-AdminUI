@@ -5,13 +5,15 @@
  * @author AmbientIT <charles.jacquin@ambient-it.net>
  */
 
-import 'rangy/lib/rangy-core';
-import 'rangy/lib/rangy-selectionsaverestore';
+//import 'rangy/lib/rangy-core';
+//import 'rangy/lib/rangy-selectionsaverestore';
+
+import 'font-awesome/scss/font-awesome.scss';
+import 'ionicons/css/ionicons.css';
 
 import './style/loader.scss';
 import 'animate.css/animate.css';
 
-import 'ui-select/dist/select.min.css';
 import 'angular-material/angular-material.css';
 
 import angular from 'angular';
@@ -20,7 +22,6 @@ import ngSanitize from 'angular-sanitize';
 
 import 'angular-ui-router';
 import 'satellizer';
-import 'ui-select';
 
 import themeConfig from './style/theming';
 import config from './config';
@@ -35,7 +36,6 @@ import common from './common/common';
 
 angular.module('ai.admin', [
   'satellizer',
-  'ui.select',
   'ui.router',
   ngMaterial,
   ngSanitize,

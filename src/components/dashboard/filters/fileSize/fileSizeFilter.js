@@ -1,4 +1,6 @@
-export default ()=>{
+export default
+/* @ngInject */
+()=>{
   return (input)=> {
     var out = "";
     var size = parseInt(input);

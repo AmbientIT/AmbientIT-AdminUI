@@ -1,6 +1,8 @@
 import template from './admin-relation-repeter.tpl.html';
 
-export default ()=>{
+export default
+/* @ngInject */
+()=>{
   return {
     scope: {
       data: '=',

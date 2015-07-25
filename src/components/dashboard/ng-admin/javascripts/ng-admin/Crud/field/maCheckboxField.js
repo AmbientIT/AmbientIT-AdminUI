@@ -28,7 +28,11 @@ define(function (require) {
                 }
             },
             template:
-            ' <md-checkbox ng-model="value" id="{{ name }}" name="{{ name }}" ng-model="data.cb1" aria-label="{{ name }}">{{ label }}</md-checkbox>'
+              `<md-switch  ng-model="value"  id="{{ name }}" name="{{ name }}" aria-label="{{name}}" class="md-primary admin-switch">
+                <span ng-class="{ 'barred-text': !value }">
+                  {{label}}
+                </span>
+              </md-switch>`
         };
     }
 

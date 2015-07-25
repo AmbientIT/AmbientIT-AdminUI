@@ -60,14 +60,14 @@ function maMenuBar($location, $rootScope, $compile) {
             function closeMenu(menu) {
                 var elements = getElementsForMenu(menu);
                 elements.ul.addClass('collapsed');
-                elements.arrow.removeClass('glyphicon-menu-down');
-                elements.arrow.addClass('glyphicon-menu-right');
+                elements.arrow.removeClass('ion-arrow-down-b');
+                //elements.arrow.addClass('glyphicon-menu-right');
             }
             function openMenu(menu) {
                 var elements = getElementsForMenu(menu);
                 elements.ul.removeClass('collapsed');
-                elements.arrow.removeClass('glyphicon-menu-right');
-                elements.arrow.addClass('glyphicon-menu-down');
+                //elements.arrow.removeClass('glyphicon-menu-right');
+                elements.arrow.addClass('ion-arrow-down-b');
             }
             function getElementsForMenu(menu) {
                 var parentLi;
@@ -78,7 +78,7 @@ function maMenuBar($location, $rootScope, $compile) {
                     }
                 });
                 return {
-                    arrow: angular.element(parentLi.find('a')[0].getElementsByClassName('arrow')[0]),
+                    arrow: angular.element(parentLi.find('a')[0].getElementsByClassName('toggle')[0]),
                     ul: parentLi.find('ul').eq(0)
                 };
             }

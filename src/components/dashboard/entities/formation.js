@@ -1,25 +1,23 @@
-export default (nga, formation, category)=>{
+export default (nga, formation, category, config)=>{
   formation.dashboardView()
     .title('formations')
     .sortField('createdAt')
     .sortDir('DESC')
-    .perPage(5)
+    .perPage(10)
     .fields([
       nga.field('avatar','template')
         .template('<admin-picture url="{{ entry.values.avatar }}" height="50px"></admin-picture>'),
       nga.field('name')
-        .label('Nom')
-        .attributes({placeholder: 'Le nom de la formation'})
-        .validation({required: true, minlength: 2, maxlength: 40}),
-      nga.field('category', 'template')
-        .label('Catégorie')
-        .template('<admin-relation-repeter entity-name="formation" data="[entry.values.category]"></admin-relation-repeter>'),
+        .label('Nom'),
+      nga.field('category', 'reference')
+        .label('Category')
+        .targetEntity(category)
+        .targetField(nga.field('name')),
       nga.field('price', 'template')
-        .label('Le prix de la formation')
+        .label('prix')
         .template('<span>{{ entry.values.price | currency:"€":0:true }}</span>'),
-      nga.field('previous', 'template')
-        .label('Prérequis')
-        .template('<admin-relation-repeter entity-name="formation" data="entry.values.previous"></admin-relation-repeter>')
+      nga.field('duration', 'template')
+        .template('<span>{{ entry.values.duraton }} jours</span>')
     ]);
   formation.listView()
     .title('Formations')
@@ -28,20 +26,14 @@ export default (nga, formation, category)=>{
     .perPage(10)
     .fields([
       formation.dashboardView().fields(),
-      nga.field('description', 'text')
-        .label('Description')
-        .attributes({placeholder: 'La description de la formation'})
-        .validation({required: true, minlength: 50, maxlength: 500}),
-      nga.field('duration', 'number')
-        .label('Durée')
-        .attributes({placeholder: 'La durée en jour de la formation'})
-        .validation({required: true, min: 1, max: 30}),
       nga.field('home', 'boolean')
         .label('homePage'),
       nga.field('trainers', 'template')
         .label('Formateurs')
-        .template('<admin-relation-repeter entity-name="trainer" data="entry.values.trainers"></admin-relation-repeter>')
-
+        .template('<admin-relation-repeter entity-name="trainer" data="entry.values.trainers"></admin-relation-repeter>'),
+      nga.field('next', 'template')
+        .label('Les prérequis')
+        .template('<admin-relation-repeter entity-name="formation" data="entry.values.previous"></admin-relation-repeter>')
     ])
     .listActions(['show', 'edit', 'delete']);
 
@@ -49,84 +41,53 @@ export default (nga, formation, category)=>{
     .title('Formation {{ entry.values.name }}')
     .actions(['list','edit', 'delete'])
     .fields([
-      nga.field('avatar','template')
-        .template('<admin-picture url="{{ entry.values.avatar }}" height="50px"></admin-picture>'),
-      nga.field('name')
-        .label('Nom')
-        .attributes({placeholder: 'Le nom de la formation'})
-        .validation({required: true, minlength: 2, maxlength: 40}),
-      nga.field('category', 'reference')
-        .label('Category')
-        .targetEntity(category)
-        .targetField(nga.field('name')),
-      nga.field('price', 'template')
-        .label('Le prix de la formation')
-        .template('<span>{{ entry.values.price | currency:"€":0:true }}</span>'),
-      nga.field('previous', 'template')
-        .label('Prérequis')
-        .template('<admin-relation-repeter entity-name="formation" data="entry.values.previous"></admin-relation-repeter>'),
-      nga.field('description', 'text')
-        .label('Description')
-        .attributes({placeholder: 'La description de la formation'})
-        .validation({required: true, minlength: 50, maxlength: 500}),
-      nga.field('duration', 'number')
-        .label('Durée')
-        .attributes({placeholder: 'La durée en jour de la formation'})
-        .validation({required: true, min: 1, max: 30}),
-      nga.field('home', 'boolean')
-        .label('homePage'),
-      nga.field('trainers', 'template')
-        .label('Formateurs')
-        .template('<admin-relation-repeter entity-name="trainer" data="entry.values.trainers"></admin-relation-repeter>'),
-
+      formation.listView().fields(),
       nga.field('next', 'template')
         .label('Les formations suivantes')
         .template('<admin-relation-repeter entity-name="formation" data="entry.values.next"></admin-relation-repeter>'),
+      nga.field('program', 'wysiwyg')
+        .label('Programme de cours'),
       nga.field('slides')
         .label('support de cours')
-        .validation({url: true, minlength: 15, maxlength: 100})
     ]);
 
   formation.creationView()
     .fields([
+      nga.field('home', 'boolean')
+        .label('Apparait en home'),
+      nga.field('published', 'boolean')
+        .label('est publié sur le site'),
       nga.field('name')
         .label('Nom')
-        .attributes({placeholder: 'Le nom de la formation'})
         .validation({required: true, minlength: 2, maxlength: 40}),
-      nga.field('category', 'reference')
+      nga.field('category', 'template')
         .label('Categorie')
-        .targetEntity(category)
-        .targetField(nga.field('name')),
+        .template(`<admin-relation-select label="categorie" attr-name="category" relation-name="category" data="entry.values"></admin-relation-select>`),
       nga.field('description','text')
         .label('Description')
         .attributes({placeholder: 'description de la fomation'})
         .validation({ minlength: 10, maxlength: 200}),
-      nga.field('duration', 'number')
+      nga.field('duration', 'template')
         .label('durée de la formation')
-        .format('0 jours'),
-      nga.field('price', 'number')
+        .template('<admin-slider step="1" min="1" max="15"  data="entry.values" attr-name="duration" label="durée en jours"></admin-slider>'),
+      nga.field('price', 'template')
         .label('Le prix de la formation')
-        .format('$0,0.00'),
-     nga.field('avatar', 'file')
-      .label('uploader un avatar pour representer la formation')
-       .uploadInformation({ 'url': '/api/upload/avatar', 'fileFormDataName': 'file', 'apifilename': 'base64','accept': '.png' }),
+        .template('<admin-slider step="1" min="400" max="5000"  data="entry.values" attr-name="price" label="prix en euros"></admin-slider>'),
+      nga.field('avatar', 'file')
+        .label('uploader un png carré')
+        .uploadInformation({ 'url': config.api.baseUrl+'upload/avatar', 'fileFormDataName': 'file', 'apifilename': 'base64','accept': '.png' }),
       nga.field('slides')
         .label('support de cours')
         .validation({url: true, minlength: 15, maxlength: 100}),
       nga.field('previous','template')
         .label('Prérequis')
-        .template('<div admin-relation-select attr-name="previous" data="entry.values" relation-name="formation"></div>'),
+        .template(`<admin-relation-select label="prérequis" attr-name="previous" data="entry.values" relation-name="formation" multiple="true"></admin-relation-select>`),
       nga.field('trainers', 'template')
         .label('Formateurs')
-        .template('<admin-relation-select attr-name="trainers" relation-name="trainer" data="entry.values"></admin-relation-select>'),
+        .template('<admin-relation-select label="formateurs" attr-name="trainers" relation-name="trainer" data="entry.values" multiple="true"></admin-relation-select>'),
       nga.field('program', 'wysiwyg')
         .label('Programme de cours')
         .attributes({placeholder: 'Programme détaillé de la formation'})
-        .validation({required: true, min: 200, max: 10000}),
-      nga.field('home', 'boolean')
-        .label('Apparait en home'),
-      nga.field('published', 'boolean')
-        .label('est publié sur le site')
     ]);
 
   formation.editionView()

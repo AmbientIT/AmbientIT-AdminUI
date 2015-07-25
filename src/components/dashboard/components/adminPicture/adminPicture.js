@@ -1,6 +1,8 @@
 import template from './admin-picture.tpl.html';
 
-export default ()=>{
+export default
+/* @ngInject */
+()=>{
   return {
     scope:{},
     bindToController:{

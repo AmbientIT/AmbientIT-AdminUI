@@ -29,14 +29,19 @@ function maChoiceField($compile) {
 
                     var choices = field.choices ? field.choices() : [];
 
-                    var template = `<div layout="row" layout-align="center">
-                                        <md-select placeholder="{{label}}" flex="75" ng-model="$parent.value" ng-required="v.required" id="{{ name }}" name="{{ name }}">
-                                            <md-option  ng-repeat="choice in getChoices(entry)" ng-selected="value == choice.value">{{choice.label}}</md-option>
-                                        </md-select>
-                                    </div>`;
+
+                    var template = `<md-select placeholder="{{ name }}" ng-model="$parent.value" ng-required="v.required" >
+                                      <md-option ng-repeat="choice in choices" value="{{ choice.value }}">{{ choice.label }}</md-option>
+                                    </md-select>`;
 
                     scope.choices = typeof(choices) === 'function' ? choices(scope.entry) : choices;
-                    element.html(template);
+                    console.log(scope.name);
+
+                  scope.$watch('choices',function(data){
+                    console.log('choices change ', data)
+                  });
+
+                  element.html(template);
 
                     var select = element.children()[0];
                     var attributes = field.attributes();

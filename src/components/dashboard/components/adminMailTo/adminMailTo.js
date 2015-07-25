@@ -1,6 +1,8 @@
 import template from './admin-mailto.tpl.html';
 
-export default ()=>{
+export default
+/* @ngInject */
+()=>{
   return {
     scope:{
       email: '@'

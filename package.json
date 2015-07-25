@@ -4,7 +4,7 @@
   "private": true,
   "description": "Admin user interface for ambient it services",
   "scripts": {
-    "build": "webpack --config webpack.build.js --bail -p",
+    "build": "NODE_ENV=build webpack --bail -p",
     "dev": "node node_modules/.bin/webpack-dev-server --history-api-fallback --hot --inline --progress",
     "test": "karma start",
     "test:live": "karma start --auto-watch --no-single-run"
@@ -42,13 +42,13 @@
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "font-awesome": "^4.3.0",
-    "html-webpack-plugin": "^1.5.2",
+    "html-webpack-plugin": "^1.6.0",
     "humane-js": "^3.2.2",
     "ionicons": "^2.0.1",
     "jsonlint": "^1.6.2",
     "lodash": "^3.10.0",
+    "lodash.merge": "^3.3.2",
     "ng-admin": "^0.7.0",
-    "ng-annotate-loader": "0.0.6",
     "ng-annotate-webpack-plugin": "^0.1.2",
     "ng-file-upload": "^5.0.9",
     "nginflection": "^1.1.10",
@@ -73,7 +73,6 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.4.1",
-    "bower-webpack-plugin": "^0.1.8",
     "font-awesome-webpack": "0.0.3",
     "isparta-instrumenter-loader": "^0.2.1",
     "jasmine-core": "^2.3.4",

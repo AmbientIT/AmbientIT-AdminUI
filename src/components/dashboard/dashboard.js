@@ -1,6 +1,5 @@
 import './dashboard.scss';
 
-//import angular from 'angular';
 
 import './ng-admin/javascripts/ng-admin';
 

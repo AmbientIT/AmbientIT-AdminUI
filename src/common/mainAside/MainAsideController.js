@@ -1,6 +1,7 @@
 import bg from '../../../img/material1.jpg';
 
-export default class{
+export default class MainAsideController{
+  /* @ngInject */
   constructor($mdSidenav,$auth, loggedUser){
     this.mdSidenav = $mdSidenav
     this.logout = $auth.logout;

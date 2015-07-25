@@ -1,10 +1,16 @@
-<md-contact-chips
-        ng-model="ctrl.data[ctrl.attrName]"
-        md-contacts="ctrl.querySearch($query)"
-        md-contact-name="name"
-        md-contact-image="avatar"
-        md-contact-email="description"
-        md-require-match
-        filter-selected="ctrl.filterSelected"
-        placeholder="To">
-</md-contact-chips>
+<div>
+	<md-tooltip>
+		{{ ctrl.label }}
+	</md-tooltip>
+	<md-select placeholder="{{ctrl.label}}" ng-model="ctrl.data[ctrl.attrName]" ng-if="!ctrl.multiple">
+		<md-option ng-repeat="item in ctrl.all" value="{{ item.slug }}">
+			{{ item.displayName || item.name  }}
+		</md-option>
+	</md-select>
+	<md-select placeholder="{{ctrl.label}}" ng-model="ctrl.data[ctrl.attrName]" ng-if="ctrl.multiple" multiple="true">
+		<md-option ng-repeat="item in ctrl.all" value="{{ item.slug }}">
+			{{ item.displayName || item.name  }}
+		</md-option>
+	</md-select>
+
+</div>

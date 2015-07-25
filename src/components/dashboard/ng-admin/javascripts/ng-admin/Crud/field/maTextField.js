@@ -19,6 +19,7 @@ define(function (require) {
                 var field = scope.field();
                 scope.name = field.name();
                 scope.v = field.validation();
+                scope.label = field.label();
                 var input = element.children()[0];
                 var attributes = field.attributes();
                 for (var name in attributes) {
@@ -26,7 +27,7 @@ define(function (require) {
                 }
             },
             template: `<md-input-container>
-                           <label>{{field._label}}</label>
+                           <label>{{label}}</label>
                            <textarea ng-model="value" id="{{ name }}" name="{{ name }}" ng-required="v.required" ng-minlength="v.minlength" ng-maxlength="v.maxlength" md-minlength="v.minlength" md-maxlength="v.maxlength"></textarea>
                        </md-input-container>`
 

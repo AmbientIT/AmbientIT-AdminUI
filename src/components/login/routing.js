@@ -1,6 +1,8 @@
 import template from './login.tpl.html';
 
-export default ($stateProvider)=>{
+export default
+/* @ngInject */
+($stateProvider)=>{
   $stateProvider
     .state('login', {
       url: '/login',

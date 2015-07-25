@@ -1,4 +1,5 @@
 export default class LoggedUser{
+  /* @ngInject */
   constructor($http,config, $auth){
     this.auth = $auth;
     this.http = $http;

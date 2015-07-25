@@ -13,7 +13,6 @@
 			</ma-view-actions>
 		</div>
 	</md-toolbar>
-	<span flex></span>
 	<div class="md-whiteframe-z2" id="edit-view" ng-class="::'ng-admin-entity-' + formController.entity.name()">
 		<form name="formController.form" ng-submit="formController.submitEdition($event)" layout="column">
 			<div ng-repeat="field in ::formController.fields track by $index">
@@ -25,5 +24,4 @@
 			</div>
 		</form>
 	</div>
-	<span flex></span>
 </section>

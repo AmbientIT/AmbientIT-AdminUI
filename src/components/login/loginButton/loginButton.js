@@ -2,7 +2,9 @@ import './loginButton.scss';
 import template from './login-button.tpl.html';
 import LoginButtonController from './LoginButtonController';
 
-export default ()=>{
+export default
+/* @ngInject */
+()=>{
   return {
     template: template,
     scope:{},

@@ -5,9 +5,10 @@ import formationUi from './entities/formation';
 import mediaUi from './entities/media';
 import userUi from './entities/user';
 import projectUi from './entities/project';
-import dashboardTemplate from './dashboard.tpl.html';
 
-export default (NgAdminConfigurationProvider, config)=>{
+export default
+/* @ngInject */
+(NgAdminConfigurationProvider, config)=>{
   let nga = NgAdminConfigurationProvider;
 
 
@@ -48,7 +49,7 @@ export default (NgAdminConfigurationProvider, config)=>{
   trainerUi(nga, trainer,user);
   mediaUi(nga, media);
   userUi(nga, user);
-  formationUi(nga, formation,category);
+  formationUi(nga, formation,category, config);
   contactUi(nga,contact);
   projectUi(nga, project, media, user);
 
@@ -70,7 +71,4 @@ export default (NgAdminConfigurationProvider, config)=>{
 
   nga.configure(admin);
 
-  //admin.dashboard(nga.dashboard()
-  //    .template(dashboardTemplate)
-  //);
 }

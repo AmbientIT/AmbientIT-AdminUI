@@ -7,12 +7,12 @@
 		<p>Now you can <a href="https://github.com/marmelab/ng-admin/blob/master/README.md#configuring-ng-admin">update the configuration</a>: add entities to the admin, then refresh.</p>
 	</div>
 </md-toolbar>
-<md-content layout="column" class="dashboard-content md-whiteframe-z2">
-	<section class="" layout="row">
+<md-content layout="column" class="dashboard-content ">
+	<section layout="row">
 		<ma-dashboard-panel flex collection="dashboardController.collections.contact" entries="dashboardController.entries.contact"></ma-dashboard-panel>
 	</section>
 
-	<section layout="column" layout-gt-md="row">
+	<section layout="column" layout-gt-lg="row">
 		<ma-dashboard-panel flex  collection="dashboardController.collections.formation" entries="dashboardController.entries.formation"></ma-dashboard-panel>
 
 		<ma-dashboard-panel flex  collection="dashboardController.collections.comments" entries="dashboardController.entries.project"></ma-dashboard-panel>

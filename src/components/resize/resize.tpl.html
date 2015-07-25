@@ -1,9 +1,22 @@
-sdf s
-f ds
-fs
-df
-sd
-f sd
-f
-s d
-f
+<section layout="column">
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+		<md-toolbar class="md-theme-indigo">
+			<h1 class="md-toolbar-tools">Sidenav Left</h1>
+		</md-toolbar>
+		<md-content layout-padding>
+			<md-button ng-click="close()" class="md-primary" hide-gt-md>
+				Close Sidenav Left
+			</md-button>
+			<p hide-md show-gt-md>
+				This sidenav is locked open on your device. To go back to the default behavior,
+				narrow your display.
+			</p>
+		</md-content>
+	</md-sidenav>
+	<md-card>
+		<img ng-src="{{ ctrl.media.url }}" class="md-card-image" alt="{{ ctrl.media.name }}"/>
+		<md-card-content>
+			<h2 class="md-title">{{ ctrl.media.name }}</h2>
+		</md-card-content>
+	</md-card>
+</section>

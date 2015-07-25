@@ -1,20 +1,21 @@
 export default class AdminRelationSelectController{
-  constructor($http){
+  /* @ngInject */
+  constructor(config, $http){
     var self = this;
-    if(!this.data){
-      this.data[this.attrName] = [];
+    if (!self.data[self.attrName]){
+      self.multiple ? self.data[self.attrName] = [] : self.data[self.attrName] = {};
+    }else{
+      if(self.multiple){
+        self.data[self.attrName] = self.data[self.attrName].map(function(data){
+          return data.slug;
+        })
+      }
     }
-    self.fruitNames = ['Apple', 'Banana', 'Orange'];
+    self.all = [];
 
-    self.entities = [];
-    $http.get('/api/'+this.relationName)
+    $http.get(config.api.baseUrl+self.relationName)
       .success(function(data){
-        console.log(data)
-        self.entities = data;
+        self.all = data || [];
       })
-      .error(function(err){
-        console.log(err);
-      });
-    this.filterSelected = false;
   }
 }

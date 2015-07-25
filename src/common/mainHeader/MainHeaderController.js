@@ -1,4 +1,5 @@
 export default class MainHeaderController{
+  /* @ngInject */
   constructor($mdSidenav, $auth){
     this.sidenav = $mdSidenav;
     this.isAuthenticated = $auth.isAuthenticated;
@@ -7,6 +8,6 @@ export default class MainHeaderController{
     this.sidenav('main').toggle();
   }
   toggleDashboardMenu(){
-    this.sidenav('dashboard').toggle();
+    this.sidenav('left').toggle();
   }
 }
