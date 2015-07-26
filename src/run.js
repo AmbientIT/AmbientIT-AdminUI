@@ -13,8 +13,9 @@ export default
   }
 
   $rootScope.$on('$viewContentLoaded', (event, toState, toParams, fromState, fromParams)=>{
-      $mdSidenav('main').close();
-      $mdSidenav('left').close();
+    console.log(event,toState,toParams,fromParams,fromState);
+    //$mdSidenav('main').close();
+    //$mdSidenav('left').close();
   })
 
 }

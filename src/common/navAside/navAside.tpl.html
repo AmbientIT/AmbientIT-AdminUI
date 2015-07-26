@@ -1,0 +1,11 @@
+<md-sidenav flex style="background-color: #f8f8f8;" layout="column" class="md-sidenav-left md-whiteframe-z4 nav-aside" md-component-id="left" md-is-locked-open="$mdMedia('gt-lg')">
+	<!--<md-content>-->
+	<md-toolbar class="md-tall" style="background-image: url({{ ::nav.bg }});background-size: cover;min-height:200px">
+		<span flex></span>
+		<div  layout="column" layout-align="center center">
+			<h3 style="cursor:pointer;" ui-sref="dashboard">Dashboard Menu</h3>
+		</div>
+	</md-toolbar>
+	<div ng-transclude></div>
+	<!--</md-content>-->
+</md-sidenav>

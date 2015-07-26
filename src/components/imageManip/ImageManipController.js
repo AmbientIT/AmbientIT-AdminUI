@@ -1,4 +1,4 @@
-export default class ResizeController{
+export default class ImageManipController{
   /* @ngInject */
   constructor($http, media){
     this.$http = $http;

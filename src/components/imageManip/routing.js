@@ -1,4 +1,4 @@
-import template from './resize.tpl.html';
+import template from './image-manip.tpl.html';
 
 export default
 /* @ngInject */
@@ -6,7 +6,7 @@ export default
   $stateProvider
     .state('resize', {
       url: '/resize/:slug',
-      controller: 'ResizeController as ctrl',
+      controller: 'ImageManipController as ctrl',
       resolve: {
         media : ($http, $stateParams, config,$sce)=>{
           return $http.get(config.api.baseUrl+'media/'+$stateParams.slug)

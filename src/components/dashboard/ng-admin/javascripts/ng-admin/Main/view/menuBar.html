@@ -10,7 +10,7 @@
                 <ul ng-if="::menu.hasChild()" class="nav nav-second-level collapsible" ng-class="::{'collapsed': !isOpen(menu) }">
                     <li ng-repeat="menu in ::menu.children()" data-menu-id="{{ ::menu.uuid }}" compile="menu.template()">
                         <a ng-click="gotoLink(menu)" ng-class="::{'active': menu.isActive(path)}">
-                            <span compile="::menu.icon()"><span class="glyphicon glyphicon-list"></span></span>
+                            <span compile="::menu.icon()"><span class="ion-navicon"></span></span>
                             {{ menu.title() }}
                         </a>
                     </li>

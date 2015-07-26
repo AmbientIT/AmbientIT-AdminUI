@@ -45,10 +45,13 @@ export default (nga, formation, category, config)=>{
       nga.field('next', 'template')
         .label('Les formations suivantes')
         .template('<admin-relation-repeter entity-name="formation" data="entry.values.next"></admin-relation-repeter>'),
+      nga.field('description')
+        .label('description'),
       nga.field('program', 'wysiwyg')
         .label('Programme de cours'),
-      nga.field('slides')
+      nga.field('slides', 'template')
         .label('support de cours')
+        .template('<admin-iframe url="{{entry.values.slides}}" width="100%" height="420"></admin-iframe>')
     ]);
 
   formation.creationView()
@@ -72,7 +75,7 @@ export default (nga, formation, category, config)=>{
         .template('<admin-slider step="1" min="1" max="15"  data="entry.values" attr-name="duration" label="durée en jours"></admin-slider>'),
       nga.field('price', 'template')
         .label('Le prix de la formation')
-        .template('<admin-slider step="1" min="400" max="5000"  data="entry.values" attr-name="price" label="prix en euros"></admin-slider>'),
+        .template('<admin-slider step="50" min="400" max="5000"  data="entry.values" attr-name="price" label="prix en euros"></admin-slider>'),
       nga.field('avatar', 'file')
         .label('uploader un png carré')
         .uploadInformation({ 'url': config.api.baseUrl+'upload/avatar', 'fileFormDataName': 'file', 'apifilename': 'base64','accept': '.png' }),

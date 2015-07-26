@@ -30,7 +30,7 @@ import run from './run';
 import configModule from './config/config';
 import login from './components/login/login';
 import dashboard from './components/dashboard/dashboard';
-import resize from './components/resize/resize';
+import imageManip from './components/imageManip/imageManip';
 import common from './common/common';
 
 
@@ -43,7 +43,7 @@ angular.module('ai.admin', [
   configModule.name,
   login.name,
   dashboard.name,
-  resize.name
+  imageManip.name
 ])
   .config(config)
   .config(themeConfig)

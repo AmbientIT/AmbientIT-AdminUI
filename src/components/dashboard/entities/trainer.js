@@ -26,29 +26,30 @@ export default (nga, trainer, user)=>{
   trainer.creationView()
     .title('Ajout d\'un nouveau formateur')
     .fields([
-      nga.field('user', 'reference')
-        .label('associé à un compte ambient-it ?')
-        .targetEntity(user)
-        .targetField(nga.field('displayName')),
-      nga.field('firstName')
-        .label('Prénom')
-        .attributes({placeholder: 'le prénom du formateur'})
-        .validation({ minlength: 2, maxlength:30}),
-      nga.field('lastName')
-        .label('Nom')
-        .attributes({placeholder: 'le nom du formateur'})
-        .validation({ minlength: 2, maxlength:30}),
-      nga.field('email')
-        .label('email')
-        .attributes({placeholder: 'l\'email du formateur'})
-        .validation({ email: true}),
+      nga.field('user', 'template')
+        .label('user')
+        .template(`<admin-relation-select label="utilisateurs ambient-it" attr-name="user" relation-name="user" data="entry.values"></admin-relation-select>`),
+      nga.field('firstName', 'template')
+        .template(`<md-input-container>
+                    <label>Prénom</label>
+                    <input type="text" ng-model="entry.values.firstName" ng-disabled="entry.values.user"/>
+                    </md-input-container>`),
+      nga.field('lastName','template')
+          .template(`<md-input-container>
+                    <label>Nom</label>
+                    <input type="text" ng-model="entry.values.lastName" ng-disabled="entry.values.user"/>
+                    </md-input-container>`),
+      nga.field('email','template')
+        .template(`<md-input-container>
+                    <label>Email</label>
+                    <input type="email" ng-model="entry.values.email" ng-disabled="entry.values.user"/>
+                    </md-input-container>`),
       nga.field('formations','template')
         .label('formations')
-        .template('<div admin-relation-select attr-name="formations" data="entry.values" relation-name="formation"></div>'),
-      nga.field('price', 'number')
+        .template(`<admin-relation-select attr-name="formations" data="entry.values" relation-name="formation"></admin-relation-select>`),
+      nga.field('price', 'template')
         .label('prix')
-        .attributes({placeholder: 'le tarif journalier du formateur'})
-        .validation({number: true}),
+        .template(`<admin-slider label="prix €/jour" data="entry.values" attr-name="price" min="0" max="1500" step="50"></admin-slider>`),
       nga.field('extrenal', 'boolean')
         .label('est une resource externe ?'),
       nga.field('home', 'boolean')

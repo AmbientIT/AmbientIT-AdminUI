@@ -15,4 +15,4 @@ export default angular.module('ai.dashboard',[
   filters.name
 ])
   .config(restangularConfig)
-  .config(ngAdminConfig);
+  .config(ngAdminConfig)

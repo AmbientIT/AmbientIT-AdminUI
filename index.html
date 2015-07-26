@@ -7,11 +7,12 @@
 	<!--<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>-->
 	<base href="/"/>
 </head>
-<body ng-app="ai.admin" layout="column">
-	<aside main-aside></aside>
-	<main-header></main-header>
-	<main ui-view flex layout="column">
-		<div class="loading" ng-init="isLoading = true;" ng-if="isLoading">Loading&#8230;</div>
+<body ng-app="ai.admin" layout="row">
+	<main layout="column" flex>
+		<ui-view flex layout="column">
+			<div class="loading" ng-init="isLoading = true;" ng-if="isLoading">Loading&#8230;</div>
+		</ui-view>
 	</main>
+	<aside main-aside></aside>
 </body>
 </html>

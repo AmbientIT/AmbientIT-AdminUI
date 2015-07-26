@@ -5,6 +5,7 @@ import formationUi from './entities/formation';
 import mediaUi from './entities/media';
 import userUi from './entities/user';
 import projectUi from './entities/project';
+import layoutTemplate from './layout/layout.tpl.html';
 
 export default
 /* @ngInject */
@@ -69,6 +70,7 @@ export default
       )
   );
 
-  nga.configure(admin);
+  admin.layout(layoutTemplate);
 
+  nga.configure(admin);
 }

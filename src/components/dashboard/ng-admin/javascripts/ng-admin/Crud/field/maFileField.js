@@ -100,26 +100,20 @@ define(function (require) {
                     };
                 }
             },
-            template:
-'<div layout="column" >' +
-    '<div layout="row">' +
-        '<md-button type="button" class="md-raised md-primary" ng-click="selectFile()">' +
-            '<i class="ion-image"></i>&nbsp{{ label }}' +
-        '</md-button>' +
-    '</div>' +
-    '<div layout="column">' +
-        '<div ng-repeat="file in files track by $index">' +
-            //'<div flex="25" style="padding-top: 6px;">' +
-            //  ' <md-progress-linear md-mode="buffer" value="{{file.progress}}">' +
-            //'</div>' +
-            '<img ng-src="{{ file.name }}" width="100px"/>' +
-            //'<md-chips><md-chip style="padding-top: 6px;"><small><em>{{ file.name }}</em></small></md-chip></md-chips>' +
-        '</div>' +
-    '</div>' +
-
-'</div>' +
-'<input type="file" ngf-multiple="multiple" ngf-accept="{{ accept }}" ngf-select ngf-change="fileSelected($files)"' +
-        'id="{{ name }}" name="{{ name }}" ng-required="v.required" style="display:none" />'
+            template: `<div layout="column" >
+                        <div layout="row">
+                            <md-button type="button" class="md-raised md-primary" ng-click="selectFile()">
+                                <i class="ion-image"></i>&nbsp{{ label }}
+                            </md-button>
+                        </div>
+                        <div layout="column">
+                            <div ng-repeat="file in files track by $index">
+                                <img ng-src="{{ file.name }}" width="100px"/>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="file" ngf-multiple="multiple" ngf-accept="{{ accept }}" ngf-select ngf-change="fileSelected($files)"
+                          id="{{ name }}" name="{{ name }}" ng-required="v.required" style="display:none" />`
         };
     }
 
