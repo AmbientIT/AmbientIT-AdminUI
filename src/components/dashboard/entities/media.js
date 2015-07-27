@@ -1,4 +1,4 @@
-export default (nga, media)=>{
+export default (nga, media, config)=>{
   media.dashboardView()
     .title('derniers uploads multimedia')
     .sortField('createdAt')
@@ -32,16 +32,12 @@ export default (nga, media)=>{
     .actions(['list','show', 'delete'])
     .fields([
       nga.field('name')
-        .label('Nom')
-        .attributes({placeholder: 'le nom du média'})
         .validation({ required: true, maxlength:30}),
       nga.field('description')
-        .label('Descripion')
-        .attributes({placeholder: 'la description du média'})
         .validation({ maxlength:200}),
       nga.field('url','file')
         .label('Uploader une image')
-        .uploadInformation({ 'url': 'http://localhost:3000/api/upload/media', 'fileFormDataName': 'file', 'accept': 'image/*' ,'apifilename': 'picturePath'})
+        .uploadInformation({ 'url': config.api.baseUrl+'/upload/media', 'fileFormDataName': 'file', 'accept': 'image/*' ,'apifilename': 'picturePath'})
     ]);
 
   media.creationView()
@@ -56,13 +52,10 @@ export default (nga, media)=>{
     .actions(['list', 'edit', 'delete'])
     .fields([
       media.editionView().fields(),
-      nga.field('originalName')
-        .label('nom original'),
+      nga.field('originalName'),
       nga.field('size','template')
-        .label('taille')
         .template('<span>{{ entry.values.size | size }}</span>'),
       nga.field('file','template')
-        .label('sans modif')
         .template('<admin-picture url="{{ entry.values.url }}"  ></admin-picture>')
     ]);
 

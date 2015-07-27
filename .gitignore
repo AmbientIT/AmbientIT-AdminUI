@@ -4,6 +4,8 @@ node_modules
 public
 dist
 
+deployconfig.json
+
 npm-debug.log
 
 src/config/env/production.js

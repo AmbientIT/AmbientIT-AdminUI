@@ -1,10 +1,10 @@
 {
   "name": "ambientit-admin-ui",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Admin user interface for ambient it services",
   "scripts": {
-    "build": "NODE_ENV=build webpack --bail -p",
+    "build": "NODE_ENV='build' webpack --bail -p --progress",
     "dev": "node node_modules/.bin/webpack-dev-server --history-api-fallback --hot --inline --progress",
     "test": "karma start",
     "test:live": "karma start --auto-watch --no-single-run"
@@ -38,6 +38,7 @@
     "bootstrap-sass": "^3.3.5",
     "codemirror": "^5.5.0",
     "css-loader": "^0.14.5",
+    "del": "^1.2.0",
     "es6-promise": "^2.3.0",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
@@ -74,6 +75,9 @@
   "devDependencies": {
     "angular-mocks": "^1.4.1",
     "font-awesome-webpack": "0.0.3",
+    "gulp-help": "^1.6.0",
+    "gulp-shell": "^0.4.2",
+    "gulp-ssh": "^0.5.1",
     "isparta-instrumenter-loader": "^0.2.1",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.36",

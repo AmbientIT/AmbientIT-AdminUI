@@ -7,19 +7,23 @@ function maDashboardPanel($state) {
         },
         link: function(scope) {
             scope.gotoList = function () {
-                $state.go($state.get('list'), { entity: scope.collection().entity.name() });
+                $state.go($state.get(list), { entity: scope.collection().entity.name() });
             };
         },
-        template: 
-        '<div class="panel-heading">' +
-            '<a ng-click="gotoList()">{{ collection().title() || collection().entity.label() }}</a>' +
-        '</div>' +
-        '<ma-datagrid name="{{ collection().name() }}"' +
-        '    entries="entries()"' +
-        '    fields="::collection().fields()"' +
-        '    entity="::collection().entity"' +
-        '    list-actions="::collection().listActions()">' +
-        '</ma-datagrid>'
+        template: `
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+              <md-button ng-click="gotoList()">
+                {{ collection().title() || collection().entity.label() }}
+              </md-button>
+          </div>
+        </md-toolbar>
+        <ma-datagrid name="{{ collection().name() }}"
+            entries="entries()"
+            fields="::collection().fields()"
+            entity="::collection().entity"
+            list-actions="::collection().listActions()">
+        </ma-datagrid>`
     };
 }
 

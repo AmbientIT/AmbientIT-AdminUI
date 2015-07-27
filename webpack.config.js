@@ -39,11 +39,12 @@ switch(process.env.NODE_ENV){
   default:
     config = {
       devtool: 'eval',
-      entry: path.join(__dirname, './src/app.js'),
+      entry:
+        path.join(__dirname, './src/app.js'),
       output: {
-        path: path.join(__dirname,'./dist'),
+        path: path.join(__dirname,'./public'),
         filename: 'bundle-[hash:6].js'
-      },
+      }
     };
     break;
 }
@@ -79,6 +80,11 @@ module.exports = merge(config,{
       }]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      global: {
+        env: JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
     new HtmlWebpackPlugin({
       template: path.join('index.html'),
       inject: 'body'

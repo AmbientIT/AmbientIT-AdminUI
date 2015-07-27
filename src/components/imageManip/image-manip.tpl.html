@@ -1,18 +1,43 @@
-<section layout="column">
-	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-		<md-toolbar class="md-theme-indigo">
-			<h1 class="md-toolbar-tools">Sidenav Left</h1>
+<section layout="column" layout-gt-lg="row">
+	<section  flex-gt-lg="30" flex-gt-md="40">
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<span flex>
+				</span>
+				<h1>
+					Toolbox
+				</h1>
+			</div>
 		</md-toolbar>
-		<md-content layout-padding>
-			<md-button ng-click="close()" class="md-primary" hide-gt-md>
-				Close Sidenav Left
-			</md-button>
-			<p hide-md show-gt-md>
-				This sidenav is locked open on your device. To go back to the default behavior,
-				narrow your display.
-			</p>
-		</md-content>
-	</md-sidenav>
+		<form ng-submit="ctrl.submitChange()">
+			<div layout="'vertical" layout-gt-md="row">
+				<div flex="10" layout layout-align="center center">
+					<span class="md-body-1">Width</span>
+				</div>
+				<md-slider flex min="0" max="255" ng-model="ctrl.media.width" aria-label="red" class>
+				</md-slider>
+				<div flex="20" layout layout-align="center center">
+					<input type="number" ng-model="ctrl.media.width" aria-label="width" aria-controls="red-slider">
+				</div>
+			</div>
+			<div  layout="'vertical" layout-gt-md="row">
+				<div flex="10" layout layout-align="center center">
+					<span class="md-body-1">Height</span>
+				</div>
+				<md-slider flex min="0" max="255" ng-model="ctrl.media.height" aria-label="height"  class>
+				</md-slider>
+				<div flex="20" layout layout-align="center center">
+					<input type="number" ng-model="ctrl.media.height" aria-label="height" aria-controls="red-slider">
+				</div>
+			</div>
+			<div  layout="'vertical" layout-gt-md="row">
+				<md-button flex type="submit" class="md-primary">
+					Modifier l'image
+				</md-button>
+			</div>
+		</form>
+	</section>
+
 	<md-card>
 		<img ng-src="{{ ctrl.media.url }}" class="md-card-image" alt="{{ ctrl.media.name }}"/>
 		<md-card-content>

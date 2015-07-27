@@ -4,24 +4,8 @@
  * use jspm babel and system.js
  * @author AmbientIT <charles.jacquin@ambient-it.net>
  */
-
-//import 'rangy/lib/rangy-core';
-//import 'rangy/lib/rangy-selectionsaverestore';
-
-import 'font-awesome/scss/font-awesome.scss';
-import 'ionicons/css/ionicons.css';
-
+import './vendors';
 import './style/loader.scss';
-import 'animate.css/animate.css';
-
-import 'angular-material/angular-material.css';
-
-import angular from 'angular';
-import ngMaterial from 'angular-material';
-import ngSanitize from 'angular-sanitize';
-
-import 'angular-ui-router';
-import 'satellizer';
 
 import themeConfig from './style/theming';
 import config from './config';
@@ -37,8 +21,8 @@ import common from './common/common';
 angular.module('ai.admin', [
   'satellizer',
   'ui.router',
-  ngMaterial,
-  ngSanitize,
+  'ngMaterial',
+  'ngSanitize',
   common.name,
   configModule.name,
   login.name,

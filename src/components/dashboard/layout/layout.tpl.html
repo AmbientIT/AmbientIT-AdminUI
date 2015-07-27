@@ -1,14 +1,12 @@
-<div flex layout="column">
 	<div layout="row" flex>
 		<aside nav-aside layout="column">
 			<ma-menu-bar menu="::appController.menu"></ma-menu-bar>
 		</aside>
 		<!--<div id="page-wrapper">-->
-		<section layout="column" flex>
+		<md-content layout="column" flex>
 			<main-header></main-header>
-			<md-content ui-view flex></md-content>
-		</section>
+			<ui-view flex></ui-view>
+		</md-content>
 		<!--</div>-->
 		<div id="loader"></div>
 	</div>
-</div>

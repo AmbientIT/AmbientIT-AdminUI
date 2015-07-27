@@ -5,12 +5,14 @@ export default
 ($stateProvider)=>{
   $stateProvider
     .state('resize', {
-      url: '/resize/:slug',
+      parent:'main',
+      url: '/imagemanipulation/:slug',
       controller: 'ImageManipController as ctrl',
       resolve: {
         media : ($http, $stateParams, config,$sce)=>{
           return $http.get(config.api.baseUrl+'media/'+$stateParams.slug)
-            .success(function(data){
+            .then(function(data){
+              console.log(data);
               data.url = $sce.trustAsUrl(data.url);
               return data;
             })

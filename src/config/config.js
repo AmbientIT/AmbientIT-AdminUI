@@ -1,13 +1,11 @@
-import angular from 'angular';
-
-import prodConfig from './env/production';
+import prodConfig from './env/build';
 import devConfig from './env/development';
 import testConfig from './env/test';
 
 var config;
 
-switch(process.env.NODE_ENV){
-  case 'production':
+switch(global.env){
+  case 'build':
     config =  prodConfig;
     break;
   case 'development':

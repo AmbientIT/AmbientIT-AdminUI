@@ -7,13 +7,13 @@ export default
     $state.go('login');
   }else{
     loggedUser.init()
-    //.then(function(){
-        //$state.go('dashboard');
-      //})
+    .then(function(){
+        $state.go('dashboard');
+      })
   }
 
   $rootScope.$on('$viewContentLoaded', (event, toState, toParams, fromState, fromParams)=>{
-    console.log(event,toState,toParams,fromParams,fromState);
+    //console.log(event,toState,toParams,fromParams,fromState);
     //$mdSidenav('main').close();
     //$mdSidenav('left').close();
   })

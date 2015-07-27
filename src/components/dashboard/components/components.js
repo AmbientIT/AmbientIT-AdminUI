@@ -9,9 +9,7 @@ import iframe from './adminIframe/adminIframe.js';
 import SelectController from './adminRelationSelect/AdminRelationSelectController';
 import IframeController from './adminIframe/AdminIframeController';
 
-export default angular.module('ai.dashboard.components',[
-  'ui.select'
-])
+export default angular.module('ai.dashboard.components',[])
   .controller('AdminRelationSelectController',SelectController)
   .controller('AdminIframeController', IframeController)
   .directive('adminSlider',slider)

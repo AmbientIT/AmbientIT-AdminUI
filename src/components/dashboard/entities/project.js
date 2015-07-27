@@ -27,20 +27,20 @@ export default (nga, project, media, user)=>{
     .listActions(['show', 'edit', 'delete']);
 
   project.creationView()
-    .title('Ajout d\'un nouveau formateur')
+    .title('Ajout d\'un nouveau projet')
     .fields([
       project.listView().fields()
     ]);
 
   project.editionView()
-    .title('Edition du formateur {{ entry.values.displayName }}')
+    .title('Edition du projet {{ entry.values.name }}')
     .actions(['list','show', 'delete'])
     .fields([
       project.creationView().fields()
     ]);
 
   project.showView()
-    .title('Formateur {{ entry.values.name }}')
+    .title('Projet {{ entry.values.name }}')
     .actions(['list','edit', 'delete'])
     .fields([
       project.creationView().fields()

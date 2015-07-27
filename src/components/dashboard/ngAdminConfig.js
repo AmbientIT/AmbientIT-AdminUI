@@ -48,7 +48,7 @@ export default
 
   categoryUi(nga,category);
   trainerUi(nga, trainer,user);
-  mediaUi(nga, media);
+  mediaUi(nga, media, config);
   userUi(nga, user);
   formationUi(nga, formation,category, config);
   contactUi(nga,contact);

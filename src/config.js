@@ -2,7 +2,7 @@ export default
 /* @ngInject */
 ($locationProvider, $compileProvider)=> {
   $locationProvider.html5Mode({
-    enabled: true,
+    enabled: false,
     requireBase:true
   });
 
