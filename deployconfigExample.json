@@ -1,0 +1,15 @@
+{
+  "localKey": "/home/foo/.ssh/barKey",
+  "hostname": "",
+  "username": "",
+  "port": "",
+  "destination": "",
+  "incremental": true,
+  "progress": true,
+  "relative": true,
+  "emptyDirectories": true,
+  "recursive": true,
+  "compress": true,
+  "clean": true,
+  "exclude": ["node_modules",".git",".idea",".tmp", "logs","deployconfig.json"]
+}

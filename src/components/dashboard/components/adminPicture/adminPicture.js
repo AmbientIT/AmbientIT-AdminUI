@@ -1,4 +1,5 @@
 import template from './admin-picture.tpl.html';
+import AdminPictureControiller from './AdminPictureController';
 
 export default
 /* @ngInject */
@@ -10,9 +11,7 @@ export default
       height: '@'
     },
     template: template,
-    controller: function($sce){
-      this.secureUrl = $sce.trustAsUrl(this.url);
-    },
+    controller: AdminPictureControiller,
     controllerAs: 'ctrl'
   }
 }

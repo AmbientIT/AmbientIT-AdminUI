@@ -20,22 +20,6 @@ switch(process.env.NODE_ENV){
       }
     };
     break;
-  case 'test':
-    config = {
-      devtool: 'inline-source-map',
-      entry: {},
-      module: {
-        preloader: [{
-            test: /\.js$/,
-            exclude: [
-              /node_modules/,
-              /\.spec\.js$/
-            ],
-            loader: 'isparta-instrumenter'
-          }]
-      }
-    };
-    break;
   default:
     config = {
       devtool: 'eval',

@@ -4,10 +4,10 @@
   "private": true,
   "description": "Admin user interface for ambient it services",
   "scripts": {
-    "build": "NODE_ENV='build' webpack --bail -p --progress",
+    "build": "NODE_ENV='build' node node_modules/.bin/webpack --bail -p --progress",
     "dev": "node node_modules/.bin/webpack-dev-server --history-api-fallback --hot --inline --progress",
-    "test": "karma start",
-    "test:live": "karma start --auto-watch --no-single-run"
+    "test": "node node_modules/.bin/karma start",
+    "test:live": "node node_modules/.bin/karma start --auto-watch --no-single-run"
   },
   "repository": {
     "type": "git",

@@ -29,7 +29,7 @@ gulp.task('clean:server',function () {
     }
   });
   return gulpSSH
-    .shell(['cd /home/SitePreProd/ambient-it-website/assets/admin', 'rm * -r'], {filePath: 'shell.log'})
+    .shell(['cd /home/SitePreProd/ambient-it-admin', 'rm * -r'], {filePath: 'shell.log'})
     .pipe(gulp.dest('logs'));
 });
 
@@ -54,17 +54,17 @@ gulp.task('build',['clean'], shell.task([
 ]));
 
 
-gulp.task('minor:bump',['deploy'], function(){
+gulp.task('minor:bump', function(){
   gulp.src('./package.json')
     .pipe(bump({type: 'minor'}))
     .pipe(gulp.dest('./'));
 });
-gulp.task('major:bump',['deploy'], function(){
+gulp.task('major:bump', function(){
   gulp.src('./package.json')
     .pipe(bump({type: 'major'}))
     .pipe(gulp.dest('./'));
 });
-gulp.task('patch:bump',['deploy'], function(){
+gulp.task('patch:bump', function(){
   gulp.src('./package.json')
     .pipe(bump({type: 'patch'}))
     .pipe(gulp.dest('./'));
@@ -87,6 +87,6 @@ gulp.task('server:restart',function () {
 
 
 
-gulp.task('patch','build, deploy with rsync and patch package.json',['patch:bump']);
-gulp.task('minor','build, deploy with rsync and bump minor version of package.json',['minor:bump']);
-gulp.task('major','build, deploy with rsync and bump major version of package.json',['major:bump']);
+gulp.task('patch','build, deploy with rsync and patch package.json',['deploy','patch:bump']);
+gulp.task('minor','build, deploy with rsync and bump minor version of package.json',['deploy','minor:bump']);
+gulp.task('major','build, deploy with rsync and bump major version of package.json',['deploy','major:bump']);

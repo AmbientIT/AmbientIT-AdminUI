@@ -7,6 +7,7 @@ export default
 ()=>{
   return {
     template: template,
+    replace: true,
     scope:{},
     bindToController:{
       icon: '@'
