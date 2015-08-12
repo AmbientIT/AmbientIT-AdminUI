@@ -1,3 +1,8 @@
+import greyLeft from './date/grey_arrow_left.svg';
+import greyRight from './date/grey_arrow_right.svg';
+import whiteLeft from './date/white_arrow_left.svg';
+import whiteRight from './date/white_arrow_right.svg';
+
 /**
  * Edition field for a date - a text input with a datepicker.
  *
@@ -12,6 +17,9 @@ function maDateField() {
         restrict: 'E',
         link: function(scope, element) {
             var field = scope.field();
+
+          console.log(field);
+          scope.label = field._label;
             scope.name = field.name();
             scope.rawValue = scope.value;
             scope.$watch('rawValue', function(rawValue) {
@@ -19,7 +27,7 @@ function maDateField() {
             });
             scope.format = field.format();
             if (!scope.format) {
-                scope.format = field.type() === 'date' ? 'yyyy-MM-dd' : 'yyyy-MM-dd HH:mm:ss';
+                scope.format = field.type() === 'date' ? 'DD-MM-YYYY' : 'DD-MM-YYYY HH:mm:ss';
             }
 
             scope.v = field.validation();
@@ -29,23 +37,41 @@ function maDateField() {
             for (var name in attributes) {
                 input.attr(name, attributes[name]);
             }
-            scope.toggleDatePicker = function ($event) {
-                $event.preventDefault();
-                $event.stopPropagation();
-                scope.isOpen = !scope.isOpen;
-            };
+
+          scope.header = {
+            monday: 'Lun',
+            tuesday: 'Mar',
+            wednesday: 'Mer',
+            thursday: 'Jeu',
+            friday: 'Ven',
+            saturday: 'Sam',
+            sunday: 'Dim'
+          };
+
+          scope.arrows = {
+            year: {
+              left: greyLeft,
+              right: greyRight
+            },
+            month: {
+              left: whiteLeft,
+              right: whiteRight
+            }
+          }
+
         },
         template: `
-            <div class="input-group datepicker">
-                <input
-                    type="text" ng-model="rawValue" id="{{ name }}" name="{{ name }}" class="form-control"
-                    datepicker-popup="{{ format }}" is-open="isOpen" close-text="Close" ng-required="v.required" />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="toggleDatePicker($event)">
-                        <i class="glyphicon glyphicon-calendar"></i>
-                    </button>
-                </span>
-            </div>
+        <mb-datepicker element-id='date1'
+         ng-model="rawValue" id="{{ name }}" name="{{ name }}"
+                   input-class="testClass"
+                   input-name="testName"
+                   arrows="arrows"
+                   calendar-header="header"
+                   placeholder="{{ label }}"
+                   date="date"
+                   date-format="{{ format }}"
+                   ng-required="v.required"></mb-datepicker>
+
         `
     };
 }

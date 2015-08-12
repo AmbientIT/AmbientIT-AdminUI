@@ -3,14 +3,13 @@
 		{{ ctrl.label }}
 	</md-tooltip>
 	<md-select placeholder="{{ctrl.label}}" ng-model="ctrl.data[ctrl.attrName]" ng-if="!ctrl.multiple">
-		<md-option ng-repeat="item in ctrl.all" value="{{ item.slug }}">
+		<md-option ng-repeat="item in ctrl.all" value="{{ item.slug || item.id }}">
 			{{ item.displayName || item.name  }}
 		</md-option>
 	</md-select>
 	<md-select placeholder="{{ctrl.label}}" ng-model="ctrl.data[ctrl.attrName]" ng-if="ctrl.multiple" multiple="true">
-		<md-option ng-repeat="item in ctrl.all" value="{{ item.slug }}">
+		<md-option ng-repeat="item in ctrl.all" value="{{ item.slug || item.id }}">
 			{{ item.displayName || item.name  }}
 		</md-option>
 	</md-select>
-
 </div>

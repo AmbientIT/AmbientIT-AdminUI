@@ -38,7 +38,6 @@ export default (nga, category)=>{
       category.creationView().fields()
     ]);
 
-
   category.showView()
     .title('Categorie de formation : {{ entry.values.name }}')
     .actions(['list', 'edit', 'delete'])
@@ -48,9 +47,7 @@ export default (nga, category)=>{
         .template('<admin-relation-repeter entity-name="formation" data="entry.values.formations"></admin-relation-repeter>')
     ]);
 
-
   category.deletionView()
     .title('Confirmez vous la suppression de la category {{ entry.values.name }} ?')
     .description('Attention Toute suppression est definitive');
-
 }

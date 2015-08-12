@@ -4,8 +4,9 @@
  * use jspm babel and system.js
  * @author AmbientIT <charles.jacquin@ambient-it.net>
  */
+import './style/main.scss';
+
 import './vendors';
-import './style/loader.scss';
 
 import themeConfig from './style/theming';
 import config from './config';
@@ -23,6 +24,7 @@ angular.module('ai.admin', [
   'ui.router',
   'ngMaterial',
   'ngSanitize',
+  'materialDatePicker',
   common.name,
   configModule.name,
   login.name,

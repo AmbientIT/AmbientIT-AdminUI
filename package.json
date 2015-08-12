@@ -1,6 +1,6 @@
 {
   "name": "ambientit-admin-ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Admin user interface for ambient it services",
   "scripts": {
@@ -49,6 +49,8 @@
     "jsonlint": "^1.6.2",
     "lodash": "^3.10.0",
     "lodash.merge": "^3.3.2",
+    "material-date-picker": "^1.1.6",
+    "moment": "^2.10.6",
     "ng-admin": "^0.7.0",
     "ng-annotate-webpack-plugin": "^0.1.2",
     "ng-file-upload": "^5.0.9",

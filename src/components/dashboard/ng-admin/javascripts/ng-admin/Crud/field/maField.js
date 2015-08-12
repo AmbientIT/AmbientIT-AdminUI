@@ -14,7 +14,7 @@ define(function (require) {
 '<div class="has-feedback" >' +
     '<div ng-if="field.editable()" ng-switch="field.type()">' +
         writeWidgetTypes +
-        '<span ng-show="fieldHasValidation(field) && getInputForField(field).$touched" class="form-control-feedback" ng-class="fieldIsValid(field) ? \'ion-checkmark-round\' : \'ion-close-round\'"></span>' +
+        //'<span ng-show="fieldHasValidation(field) && getInputForField(field).$touched" class="form-control-feedback" ng-class="fieldIsValid(field) ? \'ion-checkmark-round\' : \'ion-close-round\'"></span>' +
     '</div>' +
     '<div ng-if="!field.editable()" >' +
         '<p class="form-control-static">' +

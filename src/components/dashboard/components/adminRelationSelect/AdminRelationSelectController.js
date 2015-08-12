@@ -7,7 +7,7 @@ export default class AdminRelationSelectController{
     }else{
       if(self.multiple){
         self.data[self.attrName] = self.data[self.attrName].map(function(data){
-          return data.slug;
+          return data.slug || data.id;
         })
       }
     }

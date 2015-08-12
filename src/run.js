@@ -8,7 +8,7 @@ export default
   }else{
     loggedUser.init()
     .then(function(){
-        $state.go('dashboard');
+        //$state.go('dashboard');
       })
   }
 

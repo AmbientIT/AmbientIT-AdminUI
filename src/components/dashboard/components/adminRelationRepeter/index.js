@@ -8,9 +8,6 @@ export default
       data: '=',
       entityName: '@'
     },
-    template: template,
-    link: function(scope){
-      console.log(scope.entityName)
-    }
+    template: template
   }
 }

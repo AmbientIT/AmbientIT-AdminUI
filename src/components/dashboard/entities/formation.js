@@ -17,7 +17,7 @@ export default (nga, formation, category, config)=>{
         .label('prix')
         .template('<span>{{ entry.values.price | currency:"€":0:true }}</span>'),
       nga.field('duration', 'template')
-        .template('<span>{{ entry.values.duraton }} jours</span>')
+        .template('<span>{{ entry.values.duration }} jours</span>')
     ]);
   formation.listView()
     .title('Formations')

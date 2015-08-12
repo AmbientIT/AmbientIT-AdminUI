@@ -12,7 +12,6 @@ export default
         media : ($http, $stateParams, config,$sce)=>{
           return $http.get(config.api.baseUrl+'media/'+$stateParams.slug)
             .then(function(data){
-              console.log(data);
               data.url = $sce.trustAsUrl(data.url);
               return data;
             })

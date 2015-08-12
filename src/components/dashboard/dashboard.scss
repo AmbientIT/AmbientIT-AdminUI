@@ -15,6 +15,13 @@
   text-decoration: line-through;
 }
 
+.testClass > input {
+  border-bottom: 3px solid #1A4987;
+  border-left: transparent;
+  border-right: transparent;
+  border-top: transparent;
+}
+
 @media screen and(min-width: 900px){
   #create-view, #edit-view{
     width:75%;
