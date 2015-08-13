@@ -9,9 +9,12 @@ export default (nga,client)=>{
     .fields([
       nga.field('name')
         .label('nom'),
+      nga.field('site')
+        .label('page web'),
       nga.field('contacts', 'template')
         .template('<admin-relation-repeter entity-name="contact" data="entry.values.contacts"></admin-relation-repeter>')
     ])
+    .actions(['create','export'])
     .listActions(['show','edit', 'delete']);
 
   client.showView()
@@ -27,10 +30,10 @@ export default (nga,client)=>{
     .fields([
       nga.field('name')
         .label('nom'),
+      nga.field('site')
+        .label('page web'),
       nga.field('contacts','template')
-        .template('<admin-relation-select label="contacts" attr-name="contacts" data="entry.values" relation-name="contact" multiple="true"></admin-relation-select>'),
-      nga.field('sessions','template')
-        .template('<admin-relation-select label="sessions" attr-name="sessions" data="entry.values" relation-name="session" multiple="true"></admin-relation-select>')
+        .template('<admin-relation-select label="contacts" attr-name="contacts" data="entry.values" relation-name="contact" multiple="true"></admin-relation-select>')
     ]);
 
   client.editionView()

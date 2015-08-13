@@ -11,6 +11,7 @@ export default (nga,student)=>{
         .label('nom'),
       nga.field('email')
     ])
+    .actions(['create','export'])
     .listActions(['show','edit', 'delete']);
 
   student.showView()
@@ -26,6 +27,7 @@ export default (nga,student)=>{
     .fields([
       nga.field('firstName'),
       nga.field('lastName'),
+      nga.field('email'),
       nga.field('sessions','template')
         .template('<admin-relation-select label="sessions" attr-name="sessions" data="entry.values" relation-name="session" multiple="true""></admin-relation-select>')
     ]);

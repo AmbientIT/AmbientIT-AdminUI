@@ -37,24 +37,28 @@ export default (nga,session,formation,trainer,client)=>{
     .listActions(['show','edit', 'delete']);
 
   session.showView()
-    .title('Contact {{ entry.values.displayName }} de la société {{ entry.values.company }} ?')
+      .title('Session de formation {{ entry.values.formation.name}} de la société {{ entry.values.client.name }}')
     .actions(['list'])
     .fields([
-      session.listView().fields()
+      session.listView().fields(),
+      nga.field('students', 'template')
+        .label('stagiaires')
+        .template('<admin-relation-repeter entity-name="student" data="entry.values.students"></admin-relation-repeter>')
     ]);
 
   session.creationView()
     .fields([
       session.listView().fields(),
       nga.field('students', 'template')
-      .template('<admin-relation-select label="stagiaire" attr-name="students" relation-name="student" data="entry.values"></admin-relation-select>')
+        .label('stagiaires')
+        .template('<admin-relation-select label="stagiaire" attr-name="students" relation-name="student" data="entry.values" multiple="true"></admin-relation-select>')
     ]);
 
   session.editionView()
     .title('Edition de la session {{ entry.values.id}}')
     .actions(['list','show', 'delete'])
     .fields([
-      formation.creationView().fields()
+      session.creationView().fields()
     ]);
 
   session.deletionView()

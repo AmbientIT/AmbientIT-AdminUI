@@ -20,23 +20,24 @@ function maDateField() {
 
           console.log(field);
           scope.label = field._label;
-            scope.name = field.name();
-            scope.rawValue = scope.value;
-            scope.$watch('rawValue', function(rawValue) {
-                scope.value = field.parse()(rawValue);
-            });
-            scope.format = field.format();
-            if (!scope.format) {
-                scope.format = field.type() === 'date' ? 'DD-MM-YYYY' : 'DD-MM-YYYY HH:mm:ss';
-            }
+          scope.name = field.name();
+          scope.rawValue = scope.value;
+          scope.$watch('rawValue', function(rawValue) {
 
-            scope.v = field.validation();
-            scope.isOpen = false;
-            var input = element.find('input').eq(0);
-            var attributes = field.attributes();
-            for (var name in attributes) {
-                input.attr(name, attributes[name]);
-            }
+              scope.value = field.parse()(rawValue);
+          });
+          scope.format = field.format();
+          if (!scope.format) {
+              scope.format = field.type() === 'date' ? 'DD-MM-YYYY' : 'DD-MM-YYYY HH:mm:ss';
+          }
+
+          scope.v = field.validation();
+          scope.isOpen = false;
+          var input = element.find('input').eq(0);
+          var attributes = field.attributes();
+          for (var name in attributes) {
+              input.attr(name, attributes[name]);
+          }
 
           scope.header = {
             monday: 'Lun',
@@ -61,14 +62,14 @@ function maDateField() {
 
         },
         template: `
-        <mb-datepicker element-id='date1'
-         ng-model="rawValue" id="{{ name }}" name="{{ name }}"
+        <mb-datepicker element-id='{{ name }}'
+                  id="{{ name }}"
                    input-class="testClass"
-                   input-name="testName"
+                   input-name="{{ name }}"
                    arrows="arrows"
                    calendar-header="header"
                    placeholder="{{ label }}"
-                   date="date"
+                   date="value"
                    date-format="{{ format }}"
                    ng-required="v.required"></mb-datepicker>
 

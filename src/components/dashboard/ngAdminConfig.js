@@ -48,7 +48,7 @@ export default
     .identifier(nga.field('id'));
 
   let client = nga.entity('client')
-    .identifier(nga.field('name'));
+    .identifier(nga.field('id'));
 
   admin
     .addEntity(contact)
