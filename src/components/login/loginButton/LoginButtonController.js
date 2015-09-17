@@ -1,15 +1,15 @@
 export default class LoginButtonController{
   /* @ngInject */
-  constructor( $auth, $timeout, $mdDialog, loggedUser){
+  constructor( $auth, $timeout, $mdDialog, loggedUser,$http){
     this.isVisible = true;
     this.isLeaving = false;
     this.dialog = $mdDialog;
     this.auth = $auth;
     this.timeout = $timeout;
     this.loggedUser = loggedUser;
+    this.http = $http;
   }
   google(ev){
-    console.log("dsfsfsdfs")
     var self = this;
     this.isLeaving = true;
     this.timeout(function(){
@@ -20,6 +20,7 @@ export default class LoginButtonController{
         })
         .catch((err)=>{
           self.isVisible = true;
+
           self.dialog.show(
               self.dialog.alert()
               .parent(angular.element(document.body))

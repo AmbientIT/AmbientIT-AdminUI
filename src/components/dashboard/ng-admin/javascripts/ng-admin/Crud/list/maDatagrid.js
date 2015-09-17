@@ -21,7 +21,7 @@ define(function (require) {
             template:
 `<div class="table-responsive-vertical shadow-z-1">
 
-	<table id="table" class="table table-hover table-mc-light-blue">
+	<table id="table" class="table">
 		<thead>
 		<tr>
 			<th ng-if="selection">

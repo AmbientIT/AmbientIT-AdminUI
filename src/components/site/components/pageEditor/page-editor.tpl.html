@@ -1,0 +1,46 @@
+<section layout="column">
+	<h2>
+		{{ ::ctrl.page.title }}
+	</h2>
+	<div layout="row">
+		<div flex="30">
+			<div layout="rox">
+				<md-button flex class="md-raised" ng-click="::ctrl.toggleComponentForm()">Ajouter un component</md-button>
+			</div>
+			<form ng-if="ctrl.visibleComponentForm" name="ctrl.componentForm" ng-submit="::ctrl.createComponent(ctrl.newComponent)">
+				<div layout="row">
+					<md-input-container flex>
+						<label>Titre du component</label>
+						<input type="text" ng-model="ctrl.newComponent.title" name="title"/>
+					</md-input-container>
+				</div>
+				<div layout="row">
+					<textarea flex froala="froalaOptions" ng-model="ctrl.newComponent.content" name="content"></textarea>
+
+				</div>
+				<md-button type="submit" class="md-raised">
+					Submit
+				</md-button>
+			</form>
+			<div ng-repeat="component in ctrl.page.components track by $index">
+				<span>
+					{{ component.title }}
+				</span>
+				<md-button class="md-button-icon">
+					<md-icon md-font-icon="ion-close-round"></md-icon>
+				</md-button>
+			</div>
+		</div>
+		<div flex="70">
+			<div  ng-repeat="component in ctrl.page.components track by $index">
+				<form>
+					<textarea froala="froalaOptions" ng-model="component.content" name="content"></textarea>
+					<md-button>
+						update
+					</md-button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</section>

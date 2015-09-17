@@ -13,7 +13,8 @@ switch(process.env.NODE_ENV){
   case 'build':
     config = {
       devtool: 'source-map',
-      entry: path.join(__dirname, './src/app.js'),
+      entry:
+        path.join(__dirname, './src/app.js'),
       output: {
         path: path.join(__dirname,'./dist'),
         filename: 'bundle-[hash:6].js'
@@ -27,7 +28,7 @@ switch(process.env.NODE_ENV){
         path.join(__dirname, './src/app.js'),
       output: {
         path: path.join(__dirname,'./public'),
-        filename: 'bundle-[hash:6].js'
+        filename: 'bundle.js'
       }
     };
     break;
@@ -80,6 +81,11 @@ module.exports = merge(config,{
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin()
   ],
+  externals: {
+    // require("jquery") is external and available
+    //  on the global var jQuery
+    "jquery": "jQuery"
+  },
   devServer :{
     contentBase: './public',
     stats: {

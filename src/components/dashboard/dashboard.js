@@ -1,6 +1,5 @@
 import './dashboard.scss';
 
-
 import './ng-admin/javascripts/ng-admin';
 
 import components from './components/components';

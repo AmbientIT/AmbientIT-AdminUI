@@ -19,12 +19,17 @@ define(function (require) {
                 var field = scope.field();
                 scope.name = field.name();
                 scope.label = field.label();
+                scope.froalaOptions = {
+                  inlineMode: false,
+                  imageResize: true,
+                  placeholder: "Edit Me"
+                }
             },
-            template: `<div layout="column">
+            template: `<md-content layout="column" style="min-height:500px;">
                            <h3 layout="row" layout-align="center">{{ label }}</h3>
-                           <div text-angular ta-unsafe-sanitizer="{{ !field.sanitize() }}" ng-model="value" id="{{ name }}" name="{{ name }}" ta-text-editor-class="border-around" ta-html-editor-class="border-around">
-                           </div>
-                       </div>`
+                           <textarea froala="froalaOptions" ng-model="value" id="{{ name }}" name="{{ name }}"></textarea>
+                           </md-content>
+                       </md-content>`
 
         };
     }

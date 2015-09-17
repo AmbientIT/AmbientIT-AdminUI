@@ -10,7 +10,7 @@ var deployConfig = require('./deployconfig.json');
 var fs = require('fs');
 var shell = require('gulp-shell');
 
-gulp.task('clean',['clean:server'], function(done){
+gulp.task('clean', function(done){
   return del(['./dist/**/*'], function(err){
     if(!err){
       done();
@@ -29,7 +29,7 @@ gulp.task('clean:server',function () {
     }
   });
   return gulpSSH
-    .shell(['cd /home/SitePreProd/ambient-it-admin', 'rm * -r'], {filePath: 'shell.log'})
+    .shell(['cd /home/cjacquin/ambient-it-admin', 'rm * -r'], {filePath: 'shell.log'})
     .pipe(gulp.dest('logs'));
 });
 
@@ -41,12 +41,9 @@ gulp.task('template',['build'], function(){
 });
 
 
-gulp.task('deploy',['template'], function(done){
+gulp.task('deploy',['template'], function(){
   gulp.src(["./dist/**/*"])
     .pipe(rsync(deployConfig))
-    .pipe(function(){
-      done();
-    });
 });
 
 gulp.task('build',['clean'], shell.task([
@@ -70,20 +67,6 @@ gulp.task('patch:bump', function(){
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('server:restart',function () {
-  var gulpSSH = new GulpSSH({
-    ignoreErrors: false,
-    sshConfig:  {
-      host: deployConfig.hostname,
-      port: deployConfig.port,
-      username: deployConfig.username,
-      privateKey: fs.readFileSync(deployConfig.localKey)
-    }
-  });
-  return gulpSSH
-    .shell(['cd /home/SitePreProd/ambient-it-website', 'pm2 restart app'], {filePath: 'shell.log'})
-    .pipe(gulp.dest('logs'));
-});
 
 
 

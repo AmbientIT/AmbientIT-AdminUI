@@ -17,6 +17,7 @@ import login from './components/login/login';
 import dashboard from './components/dashboard/dashboard';
 import imageManip from './components/imageManip/imageManip';
 import common from './common/common';
+import site from './components/site'
 
 
 angular.module('ai.admin', [
@@ -29,7 +30,8 @@ angular.module('ai.admin', [
   configModule.name,
   login.name,
   dashboard.name,
-  imageManip.name
+  imageManip.name,
+  site.name
 ])
   .config(config)
   .config(themeConfig)

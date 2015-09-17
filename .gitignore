@@ -8,4 +8,4 @@ deployconfig.json
 
 npm-debug.log
 
-src/config/env/production.js
+src/config/env/build.js

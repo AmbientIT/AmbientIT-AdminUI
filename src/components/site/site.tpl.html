@@ -1,0 +1,15 @@
+<section layout="column">
+	<h1>Edition du contenu</h1>
+	<div layout="row">
+		<md-select ng-model="ctrl.selectedPage" flex ng-change="ctrl.selectPage(ctrl.selectedPage)">
+			<md-option ng-repeat="page in ctrl.pages track by $index" ng-value="page">
+				{{ page.title }}
+			</md-option>
+		</md-select>
+		<md-button class="md-icon-button" ng-click="ctrl.addPage()">
+			<md-icon md-font-icon="ion-plus-round"></md-icon>
+		</md-button>
+	</div>
+
+	<ui-view></ui-view>
+</section>

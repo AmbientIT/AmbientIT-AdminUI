@@ -24,6 +24,10 @@ export default (nga, formation, category, config)=>{
     .sortField('name')
     .sortDir('ASC')
     .perPage(10)
+    .filters([
+      nga.field('name'),
+      nga.field('category')
+    ])
     .fields([
       formation.dashboardView().fields(),
       nga.field('home', 'boolean')
@@ -54,15 +58,22 @@ export default (nga, formation, category, config)=>{
         .template('<admin-iframe url="{{entry.values.slides}}" width="100%" height="420"></admin-iframe>')
     ]);
 
-  formation.creationView()
+  formation.editionView()
+    .title('Edition de la formation {{ entry.values.name }}')
+    .actions(['list','show', 'delete'])
     .fields([
+      nga.field('intro', 'wysiwyg')
+        .label('Introduction'),
+      nga.field('objectives', 'wysiwyg')
+        .label('Objectifs'),
+      nga.field('requiredSkills', 'wysiwyg')
+        .label('Prérequis'),
+      nga.field('targetAudience','wysiwyg')
+        .label('public ciblé'),
       nga.field('home', 'boolean')
         .label('Apparait en home'),
       nga.field('published', 'boolean')
         .label('est publié sur le site'),
-      nga.field('name')
-        .label('Nom')
-        .validation({required: true, minlength: 2, maxlength: 40}),
       nga.field('category', 'template')
         .label('Categorie')
         .template(`<admin-relation-select label="categorie" attr-name="category" relation-name="category" data="entry.values"></admin-relation-select>`),
@@ -83,7 +94,7 @@ export default (nga, formation, category, config)=>{
         .label('support de cours')
         .validation({url: true, minlength: 15, maxlength: 100}),
       nga.field('previous','template')
-        .label('Prérequis')
+        .label('formations prérequise')
         .template(`<admin-relation-select label="prérequis" attr-name="previous" data="entry.values" relation-name="formation" multiple="true"></admin-relation-select>`),
       nga.field('trainers', 'template')
         .label('Formateurs')
@@ -93,12 +104,15 @@ export default (nga, formation, category, config)=>{
         .attributes({placeholder: 'Programme détaillé de la formation'})
     ]);
 
-  formation.editionView()
-    .title('Edition de la formation {{ entry.values.name }}')
-    .actions(['list','show', 'delete'])
+
+  formation.creationView()
     .fields([
-      formation.creationView().fields()
+      nga.field('name')
+        .label('Nom')
+        .validation({required: true, minlength: 2, maxlength: 40}),
+      formation.editionView().fields()
     ]);
+
 
   formation.deletionView()
     .title('Confirmez vous la suppression de la formation {{ entry.values.name }} ?')

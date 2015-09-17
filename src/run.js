@@ -1,6 +1,6 @@
 export default
 /* @ngInject */
-($rootScope, $auth, $state, loggedUser, $mdSidenav)=>{
+($rootScope, $auth, $state, loggedUser, $mdSidenav, $http)=>{
   $rootScope.isLoading = false;
 
   if(!$auth.isAuthenticated()){
