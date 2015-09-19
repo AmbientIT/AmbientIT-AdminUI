@@ -62,18 +62,18 @@ export default (nga, formation, category, config)=>{
     .title('Edition de la formation {{ entry.values.name }}')
     .actions(['list','show', 'delete'])
     .fields([
-      nga.field('intro', 'wysiwyg')
-        .label('Introduction'),
-      nga.field('objectives', 'wysiwyg')
-        .label('Objectifs'),
-      nga.field('requiredSkills', 'wysiwyg')
-        .label('Prérequis'),
-      nga.field('targetAudience','wysiwyg')
-        .label('public ciblé'),
       nga.field('home', 'boolean')
         .label('Apparait en home'),
       nga.field('published', 'boolean')
         .label('est publié sur le site'),
+      nga.field('intro', 'wysiwyg')
+        .label('Introduction'),
+      nga.field('objectives', 'text')
+        .label('Objectifs'),
+      nga.field('requiredSkills', 'text')
+        .label('Prérequis'),
+      nga.field('targetAudience','text')
+        .label('public ciblé'),
       nga.field('category', 'template')
         .label('Categorie')
         .template(`<admin-relation-select label="categorie" attr-name="category" relation-name="category" data="entry.values"></admin-relation-select>`),

@@ -1,8 +1,6 @@
-import Page from './Page';
-
 export default
-/* @ngInject */
 class PageService{
+  /* @ngInject */
   constructor($http, config){
     this.http = $http;
     this.url = config.api.baseUrl+'page';
@@ -37,9 +35,18 @@ class PageService{
       })
   }
 
+  updatePage(){
+    var self = this;
+    return this.http.put(self.url+'/'+self.selected.id, self.selected)
+      .then((result)=>{
+        return result.data
+      })
+  }
+
   createComponent(component){
     var self = this;
     component.page = self.selected.id;
+    console.log(component);
     return this.http.post(self.url+'component', component)
       .then((result)=>{
         self.selected.components.push(result.data);
@@ -56,7 +63,7 @@ class PageService{
       })
   }
 
-  removeComponent(component){
+  removeComponent(component, index){
     var self = this;
     return this.http.delete(self.url+'component/'+component.id)
       .then(()=>{

@@ -6,11 +6,19 @@ class PageEditorController{
     this.PageService = PageService;
     this.page = PageService.selected;
     this.froalaOptions = {
-      inlineMode: false,
+      inlineMode: true,
       imageResize: true,
       placeholder: "Contenu du component"
     };
     this.visibleComponentForm = false;
+  }
+
+  updatePage(){
+    this.PageService
+      .updatePage()
+      .then(()=>{
+        console.log('page updated');
+      })
   }
 
   addComponents(component){
@@ -25,9 +33,27 @@ class PageEditorController{
     var self = this;
     this.PageService
       .createComponent(component)
-      .then(function(){
+      .then(()=>{
         self.newComponent = {};
         self.toggleComponentForm();
+      })
+  }
+
+  updateComponent(component){
+    var self = this;
+    this.PageService
+      .updateComponent(component)
+      .then(()=>{
+        console.log('update success');
+      })
+  }
+
+  removeComponent(component, index){
+    var self = this;
+    this.PageService
+      .removeComponent(component, index)
+      .then(()=>{
+        console.log('remove success');
       })
   }
 }

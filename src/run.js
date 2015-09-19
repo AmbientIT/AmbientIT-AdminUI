@@ -12,7 +12,8 @@ export default
       })
   }
 
-  $rootScope.$on('$viewContentLoaded', (event, toState, toParams, fromState, fromParams)=>{
+  $rootScope.$on('$stateChangeError', (event, toState, toParams, fromState, fromParams, error)=>{
+    throw error;
     //console.log(event,toState,toParams,fromParams,fromState);
     //$mdSidenav('main').close();
     //$mdSidenav('left').close();

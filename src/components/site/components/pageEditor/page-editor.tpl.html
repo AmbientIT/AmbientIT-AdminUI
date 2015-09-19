@@ -1,10 +1,15 @@
 <section layout="column">
-	<h2>
-		{{ ::ctrl.page.title }}
+	<h2 layout="row">
+		<md-input-container flex>
+			<label>Titre de la page</label>
+			<input type="text" ng-model="ctrl.page.title"/>
+		</md-input-container>
+		<md-button ng-click="ctrl.updatePage(ctrl.page)">
+			Update
+		</md-button>
 	</h2>
-	<div layout="row">
-		<div flex="30">
-			<div layout="rox">
+		<div>
+			<div layout="row">
 				<md-button flex class="md-raised" ng-click="::ctrl.toggleComponentForm()">Ajouter un component</md-button>
 			</div>
 			<form ng-if="ctrl.visibleComponentForm" name="ctrl.componentForm" ng-submit="::ctrl.createComponent(ctrl.newComponent)">
@@ -14,8 +19,8 @@
 						<input type="text" ng-model="ctrl.newComponent.title" name="title"/>
 					</md-input-container>
 				</div>
-				<div layout="row">
-					<textarea flex froala="froalaOptions" ng-model="ctrl.newComponent.content" name="content"></textarea>
+				<div layout="row" style="min-height:200px;">
+					<textarea flex froala="ctrl.froalaOptions" ng-model="ctrl.newComponent.content" name="content"></textarea>
 
 				</div>
 				<md-button type="submit" class="md-raised">
@@ -23,23 +28,22 @@
 				</md-button>
 			</form>
 			<div ng-repeat="component in ctrl.page.components track by $index">
-				<span>
-					{{ component.title }}
-				</span>
-				<md-button class="md-button-icon">
-					<md-icon md-font-icon="ion-close-round"></md-icon>
-				</md-button>
-			</div>
-		</div>
-		<div flex="70">
-			<div  ng-repeat="component in ctrl.page.components track by $index">
-				<form>
-					<textarea froala="froalaOptions" ng-model="component.content" name="content"></textarea>
-					<md-button>
-						update
+				<div layout="row">
+					<h4 flex style="text-align: center;">
+						{{ component.title }}
+					</h4>
+					<md-button class="md-button-icon" ng-click="ctrl.removeComponent(component, $index)">
+						<md-icon md-font-icon="ion-close-round"></md-icon>
 					</md-button>
-				</form>
-
+				</div>
+				<div layout="row" style="min-height:200px;">
+					<textarea flex froala="ctrl.froalaOptions" ng-model="component.content" name="content"></textarea>
+				</div>
+				<div layout="row">
+					<md-button class="md-primary" flex ng-click="ctrl.updateComponent(component)">
+						Update
+					</md-button>
+				</div>
 			</div>
 		</div>
 	</div>
