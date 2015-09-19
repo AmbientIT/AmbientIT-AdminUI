@@ -65,6 +65,7 @@
     "del": "^1.2.0",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
+    "gulp": "^3.9.0",
     "gulp-help": "^1.6.0",
     "gulp-shell": "^0.4.2",
     "gulp-ssh": "^0.5.1",
